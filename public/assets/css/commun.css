@@ -1,0 +1,63 @@
+@font-face {
+    font-family: "Inter-regular";
+    src: url("../fonts/Inter/static/Inter-Regular.ttf");
+
+    font-family: "Inter-sm-bold";
+    src:url("../fonts/Inter/static/Inter-SemiBold.ttf");
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Inter-regular";
+    font-size: 16px;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.profil{
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 1px 1px rgb(199, 198, 198);
+}
+.profil nav a{
+    font-family: "Inter-regular" !important;
+    font-size:14px;
+}
+.profil nav form input{
+    height: 39px;
+    border: 1px solid;
+    border-color: rgb(194, 192, 192);
+    box-shadow: none;
+    padding-left: 5px;
+    border-radius: 5px 0 0 5px;
+    font-family: "Inter-regular";
+    font-size: 12px;
+}
+.profil nav form input:focus-visible{
+    border: 1px solid rgb(114, 113, 113);
+    border: none !important;
+}
+.profil nav form button{
+    height:39px;
+    border-radius: 0 5px 5px 0;
+}
+.profil .table-responsive{
+    width: 100%;
+    height: inherit;
+}
+.profil .table-responsive table tbody tr td a{
+    width: 30%;
+}
+.profil .table-responsive table tbody tr td a span{
+    font-family: "Inter-regular";
+    font-size: 12px;
+}
+@media screen and (max-width:720px){
+    .profil .table-responsive table tbody tr td a span{
+        display: none;
+    }
+}

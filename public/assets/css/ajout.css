@@ -1,0 +1,160 @@
+@font-face {
+    font-family: "Inter-regular";
+    src: url("../fonts/Inter/static/Inter-Regular.ttf");
+
+    font-family: "Inter-sm-bold";
+    src:url("../fonts/Inter/static/Inter-SemiBold.ttf");
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Inter-regular";
+    font-size: 16px;
+}
+.content{
+    display: flex;
+    flex: content;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.content div.contenu{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content div.contenu .carousel-inner{
+    width: 90%;
+    height: 90%;
+    box-shadow: 0 2px 2px 2px rgb(202, 200, 200);
+}
+.content div.contenu .carousel-inner .carousel-item{
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 2px 2px 2px gray;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .icone{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .icone figure{
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 !important;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .icone figure span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 1px gray;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .icone figure span i{
+    font-size: 100px;
+    color:  #1f8aa6;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .icone figure figcaption h4{
+    font-family: "Inter-sm-bold";
+    font-weight: 200;
+    margin-top: 2%;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .form-group{
+    display: flex;
+    flex-direction: column;
+    transition: all .3s ease;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .form-group strong{
+    font-family: "Inter-regular" !important;
+    font-weight: normal;
+    font-size: 12px;
+    color: red;
+    transition: all .3s ease;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .form-group span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: -40px;
+    z-index: 1;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .form-group input{
+    padding-left: 40px;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .top{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .bottom{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .top .card{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    column-gap: 10px;
+    flex-wrap: wrap;
+    padding-left: 5%;
+    padding-bottom: 5%;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .top h5{
+    font-family: "Inter-sm-bold";
+    font-weight: 200;
+    font-size: 14px;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .bottom h5{
+    font-family: "Inter-sm-bold";
+    font-weight: 200;
+    font-size: 14px;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .bottom .card{
+    width: 100%;
+    height: 90%;
+}
+.content div.contenu .carousel-inner .carousel-item .formulaire .form .button{
+    height: 50px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}

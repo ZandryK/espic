@@ -1,0 +1,132 @@
+@font-face {
+    font-family: "Inter-regular";
+    src: url("../fonts/Inter/static/Inter-Regular.ttf");
+
+    font-family: "Inter-sm-bold";
+    src:url("../fonts/Inter/static/Inter-SemiBold.ttf");
+}
+*{
+    font-family: "Inter-regular";
+}
+
+section#content .container-fluid .content .content-menu{
+    position: relative;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    padding: 20px 10px 10px 10px;
+}
+section#content .container-fluid .content .content-menu div.top, div.center, div.bottom{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 5px;
+}
+section#content .container-fluid .content .content-menu div .card{
+    display: flex;
+    height: 100px;
+    min-width: 300px;
+    box-shadow: 0 1px 1px 1px #20202049;
+    border: none;
+    transition: all .2s ease-in;
+    padding: 0;
+}
+section#content .container-fluid .content .content-menu div .card:hover{
+    background-color:#1f8aa6;
+  
+}
+section#content .container-fluid .content .content-menu div .card figure{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin: 0;
+}
+section#content .container-fluid .content .content-menu div .card:hover figure figcaption h3{
+    color: #fff !important;
+}
+section#content .container-fluid .content .content-menu div .card:hover figure figcaption p{
+    color: #fff !important;
+}
+section#content .container-fluid .content .content-menu div .item{
+    width: 48%;
+    
+}
+section#content .container-fluid .content .content-menu div.center{
+    row-gap: 10px;
+}
+section#content .container-fluid .content .content-menu div.center .card a{
+
+    text-decoration: none;
+}
+section#content .container-fluid .content .content-menu div.center .card{
+    width: 31.5%;
+    
+}
+section#content .container-fluid .content .content-menu div .card figure figcaption{
+    display: flex;
+    flex-direction: column;
+
+}
+section#content .container-fluid .content .content-menu div .card figure span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100%;
+}
+section#content .container-fluid .content .content-menu div .card figure span i{
+    color:#1f8aa6;
+    font-size: 40px;
+}
+section#content .container-fluid .content .content-menu div .card:hover figure span i{
+    color:#fff;
+}
+section#content .container-fluid .content .content-menu div .card figure  figcaption{
+    margin: 0;
+    padding:5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+section#content .container-fluid .content .content-menu div .card:hover figure  figcaption a{
+    font-size: 12px;
+    color: #fff;
+}
+section#content .container-fluid .content .content-menu div .card figure  figcaption a{
+    font-size: 12px;
+    color: #363636;
+}
+section#content .container-fluid .content .content-menu div .card figure  figcaption h3{
+    font-family: "Inter-sm-bold";
+    font-size: 16px;
+    font-weight: 500;
+    color:  #363636;
+}
+section#content .container-fluid .content .content-menu div .card figure  figcaption p{
+    font-size: 12px;
+    color:  #363636;
+}
+@media screen and (max-width:1310px) {
+    .card.item{
+        width: 300px !important;
+        
+    }
+    section#content .container-fluid .content{
+        height: auto !important;
+        overflow-y: scroll;
+        row-gap: 10px;
+    }
+    section#content .container-fluid .content .content-menu{
+        width: 100%;
+        height: auto !important;
+    }
+}

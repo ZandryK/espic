@@ -1,0 +1,150 @@
+@font-face {
+    font-family: "Inter-regular";
+    src: url("../fonts/Inter/static/Inter-Regular.ttf");
+
+    font-family: "Inter-sm-bold";
+    src:url("../fonts/Inter/static/Inter-SemiBold.ttf");
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+    overflow: hidden;
+}
+section{
+    /* background-color: rgba(156, 155, 155, 0.322); */
+    /* background: url("../images/portfolio/banner2.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+section .blur{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000708cc;
+    backdrop-filter: blur(25px) !important;
+}
+section .img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+section .img img{
+    width: 100%;
+    height: 100%;
+}
+section div.login{
+    width: 50%;
+    min-height: 60%;
+    box-shadow: 0px 5px 5px 5px rgba(128, 128, 128, 0.151);
+    border-radius: 5px;
+    border: none;
+    z-index: 0;
+    box-sizing: border-box;
+    border: 7px solid transparent;
+    display: flex;
+    flex-direction: column;
+    background:#fff;
+    backdrop-filter: blur(25px);
+}
+section div.login figure{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1% 0 1% 0;
+}
+section div.login figure span{
+    margin-top: -60px;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 2px rgba(128, 128, 128, 0.24);
+    z-index: 1;
+
+}
+section div.login figure span i{
+    font-size: 50px;
+    color: rgb(187, 186, 186);
+}
+section div.login figure figcaption{
+    font-family: "Inter-sm-bold";
+}
+section div.login figure figcaption h2{
+    font-size: 20px;
+    font-weight: 400;
+    color: #1f8da9;
+    margin-top: 5%;
+    margin-bottom: 0;
+}
+section div.login form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+   
+}
+section div.login form div{
+    width: 100%;
+    padding: 0 5% 0 5%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+section div.login form div label{
+    font-family: "Inter-regular";
+    font-size: 14px;
+}
+section div.login form div i.icon-prefix{
+    font-size: 30px;
+    margin-bottom: -40px;
+    z-index: 1;
+    color: rgba(97, 96, 96, 0.63);
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 0 0 5px;
+}
+section div.login form input{
+    height: 40px;
+    padding-left: 40px;
+    background: transparent;
+}
+section div.login form button{
+    width: 200px;
+    height: 50px;
+    margin: 1% auto;
+    background-color: #1f8da9;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    color: #fff;
+    font-family: "Inter-regular";
+    box-shadow: 0 1px 1px 1px rgba(128, 128, 128, 0.329);
+}
+
+@media screen and (max-width:720px) {
+    section div.login{
+        width: 80%;
+        height: auto;
+    }
+}

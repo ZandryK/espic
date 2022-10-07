@@ -1,0 +1,72 @@
+@font-face {
+    font-family: "Inter-regular";
+    src: url("../fonts/Inter/static/Inter-Regular.ttf");
+
+    font-family: "Inter-sm-bold";
+    src:url("../fonts/Inter/static/Inter-SemiBold.ttf");
+}
+.content-center{
+    width: 80%;
+}
+.etudiant-content{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    column-count: 3;
+    row-gap: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.etudiant-content .card{
+    width: calc((100% - (10px *2)) / 3);
+    min-width: 250px;
+    height: 250px;
+    box-shadow: 0 1px 1px 1px rgba(168, 167, 167, 0.589);
+    border: none;
+    transition: all .3s ease;
+}
+
+.etudiant-content .card figure{
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+    padding-top: 5%;
+}
+.etudiant-content .card figure .icone{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    box-shadow: 0 1px gray;
+
+}
+.etudiant-content .card figure .icone i{
+    font-size: 30px;
+}
+.etudiant-content .card figure figcaption{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.etudiant-content .card figure figcaption h3{
+    font-family: "Inter-sm-bold";
+    font-size: 20px;
+}
+
+@media screen and (max-width:720px) {
+    .etudiant-content{
+        justify-content: center;
+        row-gap: 10px;
+    }
+}
