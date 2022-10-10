@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateFiliereNiveauEtudesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('filiere_niveau_etudes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string("matricule")->unique();
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->foreignId("filiere_id")->constrained()->onDelete("cascade")->onUpdate('cascade');
+            $table->foreignId('niveau_etude_id')->constrained()->onDelete('cascade')->onUpdate("cascade");
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('filiere_niveau_etudes');
     }
 }

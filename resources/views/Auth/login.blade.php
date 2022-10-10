@@ -32,18 +32,17 @@
                 <div class="form-group">
                     <label for="matricule">Matricule</label>
                     <i class="fa fa-user icon-prefix"></i>
-                    <input type="text" class="form-control" id="matricule">
+                    <input type="text" class="form-control" id="matricule" name="matricule">
                     <span class="invalid-feedback alert-matricule" id="mymatricule"></span>
                 </div>
                 <div class="form-group">
                     <label for="password">Mots de passe</label>
                     <i class="fa fa-lock icon-prefix"></i>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" id="password" name="password">
                     <span class="invalid-feedback alert-password" id="mypassword"></span>
                 </div>
                 <button type="submit" class="button-submit">Connexion</button>
             </form>
-
         </div>
     </section>
     <script src="{{ asset('assets/js/login.js') }}"></script>

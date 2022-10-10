@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Exists;
 
 class LoginController extends Controller
 {
@@ -15,11 +16,11 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credential = $request->validate([
+        $request->validate([
             'matricule'=>['required'],
             'password'=>['required']
         ]);
-
+        $credential = $request->only("matricule","password");
         if (Auth::attempt($credential)) {
             $request->session()->regenerate();
             return redirect()->intended("/Home");

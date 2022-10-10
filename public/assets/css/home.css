@@ -145,7 +145,7 @@ section div.container div.contenue div.description p{
     font-family: "Inter-regular";
     font-size: 16px;
 }
-section div.container div.contenue div.description button{
+section div.container div.contenue div.description .button{
     width: 200px;
     height: 60px;
     background-color: transparent;
@@ -154,8 +154,12 @@ section div.container div.contenue div.description button{
     text-transform: uppercase;
     color: #fff;
     transition: all 1s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
-section div.container div.contenue div.description button:hover{
+section div.container div.contenue div.description .button:hover{
     background-color: #fff ;
     color: rgb(94, 93, 93);
     border: none;

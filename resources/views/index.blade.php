@@ -13,7 +13,7 @@
             <div class="description" data-aos="zoom-in">
                 <h1>ESC-ESPIC cours en ligne</h1>
                 <p class="banner-description">Ecole superieur proffessionnel en informatique et commerce</p>
-                <button class="button">connexion</button>
+                <a href="{{ route('login') }}" class="button">connexion</a>
             </div>
             <div class="illustration" data-aos="zoom-in">
                 <img src="{{ asset('assets/images/Banners/illustration.png') }}" alt="" srcset="">

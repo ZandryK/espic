@@ -16,19 +16,19 @@
     <div class="wrapper">
     {{-- SIDEBAR --}}
     <section id="sidebar">
-        <a href="{{ route('admin') }}" class="brand">
+        <a href="" class="brand">
             <i class="fa fa-user-secret"></i>
             <span class="text logo">ESC-ESPIC</span>
         </a>
         <ul class="side-menu top">
             <li class="">
-                <a href="{{ route('admin') }}">
+                <a href="">
                     <i class="fa fa-dashboard"></i>
                     <span class="text">Menu</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('profil') }}">
+                <a href="">
                     <i class="fa fa-user"></i>
                     <span class="text">Pofil</span>
                 </a>
@@ -42,7 +42,7 @@
         </ul>
         <ul class="side-menu bottom">
             <li>
-                <a href="">
+                <a href="{{ route('logout') }}">
                     <i class="fa fa-sign-out"></i>
                     <span>Deconnexion</span>
                 </a>
@@ -63,7 +63,7 @@
                     <li class="nav-item">
                         <a href="" class="nav-link">
                             <i class="fa fa-user-circle"></i>
-                            <span class="text">ESPIC</span>
+                            <span class="text">{{auth()->user()->name}}</span>
                         </a>
                     </li>
                 </ul>

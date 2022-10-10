@@ -5,11 +5,11 @@
 @section('adminBody')
 <div class="profil">
     <nav class="navbar navbar-expand-sm bg-light navbar-light d-flex flex-row">
-        <a href="" class="navbar-brand text-capitalize"><i class="fa fa-cogs"></i>&nbsp;</a>
-        <form class="form-inline ml-auto " method="POST" action="">
+        <a href="" class="navbar-brand text-capitalize"><i class="fa fa-cogs"></i>&nbsp;{{$key}}</a>
+        <form class="form-inline ml-auto " method="POST" action="{{ route('save.configuration') }}">
             @csrf
-            {{-- <input type="hidden" name="key" value="{{$key}}">
-          <input type="text" placeholder="entrer nouveau {{$key}}" name="designation"> --}}
+            <input type="hidden" name="key" value="{{$key}}">
+          <input type="text" placeholder="entrer nouveau {{$key}}" name="designation">
           <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i></button>
         </form>
       </nav> 
@@ -23,23 +23,23 @@
                 </tr>
             </thead>
         <tbody>
-            @foreach ($data as $data)
+            @foreach ($data as $index=>$data)
                 <tr class="justify-content-center">
-                    <th scope="row" class=""></th>
+                    <th scope="row" class="">{{$index + 1}}</th>
                     <td>
-                        {{-- @if ($key != "vagues")
+                        @if ($key != "vagues")
                         {{$data->designation}}
                         @else
                         {{$data->designation_vague}}
-                        @endif --}}
+                        @endif
                     </td>
                     <td class="">
                         
-                        {{-- @if ($key != "vagues")
-                        <a href="{{ route('attribution', ['key'=>$key,"key2"=>$data->designation]) }}" class="btn btn-info btn-sm"><i class="fa fa-plus"></i><span>&nbsp;Attribution</span></a>
+                        @if ($key != "vagues")
+                        <a href="{{ route('attribution', ['key'=>$key,"key2"=>$data->id]) }}" class="btn btn-info btn-sm"><i class="fa fa-plus"></i><span>&nbsp;Attribution</span></a>
                         @else
                         <a href="{{ route('attribution', ['key'=>$key,"key2"=>$data->designation_vague]) }}" class="btn btn-info btn-sm"><i class="fa fa-plus"></i><span>&nbsp;Attribution</span></a>
-                        @endif --}}
+                        @endif
                         <a href="" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i><span>&nbsp;Supprimer</span></a>
                         <a href="" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i><span>&nbsp;Edit</span></a>
                     </td>

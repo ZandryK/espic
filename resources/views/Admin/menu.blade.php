@@ -7,37 +7,37 @@
 <div class="content-menu">
     <div class="center">
         <div class="card">
-            <a href="{{ route('fne_liste',['key'=>"filiere"])}}">
+            <a href="{{ route('configuration',['key'=>'filiere']) }}">
                 <figure>
                     <span><i class="fa fa-bookmark"></i></span>
                     <figcaption>
                         <h3>Filières</h3>
                         <p>Gerer vos filière, ajouter, supprimer, modifier</p>
-                        <a href="{{ route('fne_liste',['key'=>"filiere"])}}">voir plus</a>
+                        <a href="{{ route('configuration',['key'=>'filiere']) }}">voir plus</a>
                     </figcaption>
                 </figure>
             </a>
         </div>
         <div class="card">
-            <a href="">
+            <a href="{{ route('configuration',['key'=>'niveau d\'etude']) }}">
                 <figure>
                     <span><i class="fa fa-graduation-cap"></i></span>
                     <figcaption>
                         <h3>Niveau d'etude</h3>
                         <p>Gerer vos niveaux d'etudes, ajouter, supprimer, modifier</p>
-                        <a href="">voir plus</a>
+                        <a href="{{ route('configuration',['key'=>'niveau d\'etude']) }}">voir plus</a>
                     </figcaption>
                 </figure>
             </a>
         </div>
         <div class="card">
-            <a href="">
+            <a href="{{ route('configuration',['key'=>'vague']) }}">
              <figure>
                  <span><i class="fa fa-user-plus"></i></span>
                  <figcaption>
                      <h3>Vagues</h3>
                      <p>Gerer vos vagues, ajouter, supprimer, modifier</p>
-                     <a href="">voir plus</a>
+                     <a href="{{ route('configuration',['key'=>'vague']) }}">voir plus</a>
                  </figcaption>
              </figure>
             </a>
@@ -55,13 +55,13 @@
             </a>
         </div>
         <div href="" class="card">
-            <a href="{{ route('liste',['key'=>"formateur"]) }}">
+            <a href="">
                 <figure>
                     <span><i class="fa fa-users"></i></span>
                     <figcaption>
                         <h3>Formateurs</h3>
                         <p>Gerer vos formateurs, ajouter, supprimer, modifier</p>
-                        <a href="{{ route('liste',['key'=>"formateur"])}}">voir plus</a>
+                        <a href="">voir plus</a>
                     </figcaption>
                 </figure>
             </a>
@@ -91,13 +91,13 @@
             </a>
         </div>
         <div class="card">
-            <a href="">
+            <a href="{{ route('users') }}">
                 <figure>
                     <span><i class="fa fa-users"></i></span>
                     <figcaption>
                         <h3>Utilisateurs</h3>
                         <p>Gerer vos utilisateurs, ajouter, supprimer, modifier</p>
-                        <a href="">voir plus</a>
+                        <a href="{{ route('users') }}">voir plus</a>
                     </figcaption>
                 </figure>
             </a>

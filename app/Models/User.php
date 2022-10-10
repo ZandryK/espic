@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'matricule',
+        'email',
         'password',
     ];
 
@@ -40,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function usergroups()
+    {
+        return $this->belongsToMany(Usergroup::class, User_UserGroupe::class, "user_id","usergroup_id");
+    }
 }
