@@ -78,6 +78,7 @@
     </div>
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    @include('sweetalert::alert')
     <script src="{{ asset('assets/js/admin.js') }}"></script>
     @yield('script')
 </body>

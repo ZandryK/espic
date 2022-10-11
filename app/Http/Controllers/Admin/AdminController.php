@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cour;
 use App\Models\Filiere;
 use App\Models\FiliereNiveauEtude;
 use App\Models\NiveauEtude;
@@ -93,6 +94,9 @@ class AdminController extends Controller
     }
 
     public function cours(){
-        return view("Admin.cours");
+        $data = Cour::all();
+        return view("Admin.cours",compact("data"));
     }
+
+    
 }

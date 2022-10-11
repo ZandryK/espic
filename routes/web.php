@@ -64,4 +64,9 @@ Route::post("/Home/Configuration/Attribution/Add",[App\Http\Controllers\Admin\Me
 /*
     route cours
 */
-Route::get("/Home/Configuration/Cours",[App\Http\Controllers\Admin\AdminController::class,"cours"])->name("Cours");
+Route::get("/Home/Configurations/Cours",[App\Http\Controllers\Admin\AdminController::class,"cours"])->name("Cours");
+
+/**
+ * Route post cours
+ */
+Route::post("/Home/configurations/Add",[App\Http\Controllers\Admin\MethodController::class,"save_cours"])->name("save.cours");

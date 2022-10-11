@@ -12,4 +12,9 @@ class Cour extends Model
         "designation",
         "duree",
     ];
+
+    public function vague_filiere_niveau_etudes()
+    {
+        return $this->belongsToMany(VagueFiliereNiveauEtude::class,CoursVgNiveauEtude::class,"cour_id","vg_niveau_etude_id");
+    }
 }

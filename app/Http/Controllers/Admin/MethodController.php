@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cour;
 use App\Models\Filiere;
 use App\Models\FiliereNiveauEtude;
 use App\Models\NiveauEtude;
@@ -20,7 +21,10 @@ class MethodController extends Controller
      */
     private $message = "Enregistrement effectuer";
     private $table;
-
+    /**
+     * register
+     * @param Request $request
+     */
      public function register(Request $request)
      {
         $table = new User();
@@ -37,10 +41,12 @@ class MethodController extends Controller
             $tb->usergroup_id = $request->checkbox[$key];
             $tb->save();
         }
-
+        alert()->success("Succes","Enregistrement effectuer");
         return redirect()->back();
      }
-
+     /**
+      * save configuration data filiere,niveau d'etude
+      */
     public function sv(Request $request)
     {
         $key = $request->key;
@@ -49,16 +55,19 @@ class MethodController extends Controller
                 $this->table = new Filiere();
                 $this->table->designation = $request->designation;
                 $this->table->save();
+                toast('Enregistrement effectuer!','success');
                 break;
             case "niveau d'etude":
                 $this->table = new NiveauEtude();
                 $this->table->designation = $request->designation;
                 $this->table->save();
+                toast('Enregistrement effectuer!','success');
                 break;
             case "vague":
                 $this->table = new Vague();
                 $this->table->designation = $request->designation;
                 $this->table->save();
+                toast('Enregistrement effectuer!','success');
 
             default:
 
@@ -67,6 +76,9 @@ class MethodController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * save all attribution
+     */
     public function store_attribution(Request $request)
     {
         $key = $request->key;
@@ -77,6 +89,7 @@ class MethodController extends Controller
                 $this->table->filiere_niveau_etude_id = $request->checkbox[$key];
                 $this->table->save();
             }
+            toast('Enregistrement effectuer!','success');
         }
         else{
             foreach ($request->checkbox as $key => $value) {
@@ -85,7 +98,23 @@ class MethodController extends Controller
                 $this->table->niveau_etude_id = $request->checkbox[$key];
                 $this->table->save();
             }
+            toast('Enregistrement effectuer!','success');
         }
+
+        return redirect()->back();
+    }
+
+    public function save_cours(Request $request){
+        $request->validate([
+            "designation"=>['required'],
+            "duree"=>['required']
+            
+        ]);
+        $cours = new Cour();
+        $cours->designation = $request->designation;
+        $cours->duree = $request->duree;
+        $cours->save();
+        toast('Enregistrement effectuer!','success');
 
         return redirect()->back();
     }
