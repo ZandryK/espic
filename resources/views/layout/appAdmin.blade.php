@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/boxicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
     @yield('style')
-    
+
     <title>ESC-ESPIC</title>
 </head>
 <body>
@@ -73,7 +73,7 @@
         <div class="container-fluid">
             <div class="content">
                 @yield('adminBody')
-            </div>    
+            </div>
     {{-- fin contenu --}}
     </div>
     <script src="{{ asset('assets/js/jquery.js') }}"></script>

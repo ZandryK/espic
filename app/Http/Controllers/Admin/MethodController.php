@@ -8,6 +8,8 @@ use App\Models\FiliereNiveauEtude;
 use App\Models\NiveauEtude;
 use App\Models\User;
 use App\Models\User_UserGroupe;
+use App\Models\Vague;
+use App\Models\VagueFiliereNiveauEtude;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -38,7 +40,7 @@ class MethodController extends Controller
 
         return $this->message;
      }
-    
+
     public function sv(Request $request)
     {
         $key = $request->key;
@@ -53,8 +55,13 @@ class MethodController extends Controller
                 $this->table->designation = $request->designation;
                 $this->table->save();
                 break;
+            case "vague":
+                $this->table = new Vague();
+                $this->table->designation = $request->designation;
+                $this->table->save();
+
             default:
-                
+
                 break;
         }
         return $this->message;
@@ -63,12 +70,23 @@ class MethodController extends Controller
     public function store_attribution(Request $request)
     {
         $key = $request->key;
-        foreach ($request->checkbox as $key => $value) {
-            $this->table = new FiliereNiveauEtude();
-            $this->table->filiere_id = $request->key2;
-            $this->table->niveau_etude_id = $request->checkbox[$key];
-            $this->table->save();
+        if($key=="vague"){
+            foreach ($request->checkbox as $key => $value) {
+                $this->table = new VagueFiliereNiveauEtude();
+                $this->table->vague_id = $request->key2;
+                $this->table->filiere_niveau_etude_id = $request->checkbox[$key];
+                $this->table->save();
+            }
         }
+        else{
+            foreach ($request->checkbox as $key => $value) {
+                $this->table = new FiliereNiveauEtude();
+                $this->table->filiere_id = $request->key2;
+                $this->table->niveau_etude_id = $request->checkbox[$key];
+                $this->table->save();
+            }
+        }
+
         return $this->message;
     }
 }

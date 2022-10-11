@@ -16,13 +16,13 @@ Route::get("/",[App\Http\Controllers\Home\HomeController::class,"index"])->name(
 
 /**
  * Route Admin Menu return view indexAdmin
- * 
+ *
  */
 
  Route::get("/Home",[App\Http\Controllers\Admin\AdminController::class,"index"])->name("Home");
 
  /**
-  * Route Admin filiere list 
+  * Route Admin filiere list
   */
 
 Route::get("/Home/Configuration/{key}",[App\Http\Controllers\Admin\AdminController::class,"configuration"])->name("configuration");
@@ -60,3 +60,8 @@ Route::get("Home/Configuration/Attribution/{key}/{key2}",[App\Http\Controllers\A
  */
 
 Route::post("/Home/Configuration/Attribution/Add",[App\Http\Controllers\Admin\MethodController::class,"store_attribution"])->name("attribution.store");
+
+/*
+    route cours
+*/
+Route::get("/Home/Configuration/Cours",[App\Http\Controllers\Admin\AdminController::class,"cours"])->name("Cours");

@@ -15,6 +15,7 @@ class CreateVaguesTable extends Migration
     {
         Schema::create('vagues', function (Blueprint $table) {
             $table->id();
+            $table->string("designation");
             $table->timestamps();
         });
     }
