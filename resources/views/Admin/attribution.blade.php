@@ -5,7 +5,7 @@
 
 @section("adminBody")
     <div class="profil">
-        <h3><i class="fa fa-cog"></i>&nbsp;Attribuer filiere avec les niveaux d' etude existants</h3>
+        <h3 style="font-size:12px ;"><i class="fa fa-cog"></i>&nbsp;Merci de choisir les champs pour attribuer cette {{$key}} </h3>
         <div class="card">
             <form action="{{ route('attribution.store') }}" method="POST">
                 @csrf
@@ -16,7 +16,7 @@
                             <input type="hidden" name="key2" value="{{$key2}}">
                             <input type="hidden" name="key" value="{{$key}}">
                             <input type="checkbox" class="custom-control-input" id="{{$data->id}}" name="checkbox[]" value="{{$data->id}}">
-                            <label class="custom-control-label" for="{{$data->id}}">{{$data->filiere_id}}|{{$data->filiere->designation}}|{{$data->niveau_etude->designation}}</label>
+                            <label class="custom-control-label" for="{{$data->id}}">{{$data->filiere->designation}}|{{$data->niveau_etude->designation}}</label>
                         </div>
                         @endforeach
                     @else

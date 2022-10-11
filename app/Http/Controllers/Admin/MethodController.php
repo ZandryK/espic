@@ -38,7 +38,7 @@ class MethodController extends Controller
             $tb->save();
         }
 
-        return $this->message;
+        return redirect()->back();
      }
 
     public function sv(Request $request)
@@ -64,7 +64,7 @@ class MethodController extends Controller
 
                 break;
         }
-        return $this->message;
+        return redirect()->back();
     }
 
     public function store_attribution(Request $request)
@@ -87,6 +87,6 @@ class MethodController extends Controller
             }
         }
 
-        return $this->message;
+        return redirect()->back();
     }
 }

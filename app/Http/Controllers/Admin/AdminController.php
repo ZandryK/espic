@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function index()
     {
         $user = auth()->user()->usergroups;
-        if($user->contains("group_name","Super Admin") || $user->contains("Super Administrateur") || $user->contains("group_name","superAdmin")){
+        if($user->contains("group_name","Super Admin") || $user->contains("Super Administrateur") || $user->contains("group_name","Super admin")){
             return view("Admin.menu");
         }else{
             return view('home.menu');
