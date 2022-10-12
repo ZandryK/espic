@@ -15,6 +15,7 @@ class CreateEtudiantFiliereNiveauEtudesTable extends Migration
     {
         Schema::create('etudiant_filiere_niveau_etudes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("etudiant_id")->constrained('etudiants')->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }
