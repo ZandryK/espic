@@ -23,4 +23,9 @@ class CoursVgNiveauEtude extends Model
     {
         return $this->belongsTo(VagueFiliereNiveauEtude::class);
     }
+
+    public function formateurs()
+    {
+        return $this->belongsToMany(Formateur::class, CourFormateur::class,'cvgnv_id','formateur_id');
+    }
 }

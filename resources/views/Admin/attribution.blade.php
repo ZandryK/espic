@@ -19,6 +19,26 @@
                             <label class="custom-control-label" for="{{$data->id}}">{{$data->filiere->designation}}|{{$data->niveau_etude->designation}}</label>
                         </div>
                         @endforeach
+                    @elseif ($key == "cours")
+                        @foreach ($data as $item => $value)
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="hidden" name="key2" value="{{$key2}}">
+                                <input type="hidden" name="key" value="{{$key}}">
+                                <input type="checkbox" class="custom-control-input" id="{{$value->id}}" name="checkbox[]" value="{{$value->id}}">
+                                <label class="custom-control-label" for="{{$value->id}}">{{$value->vague->designation}}|{{$value->filiere_niveau_etude->niveau_etude->designation}}|{{$value->filiere_niveau_etude->filiere->designation}}</label>
+                            </div>
+                        @endforeach
+                    @elseif ($key == 'formateur')
+                            @foreach ($data as $data )
+                                @foreach ($data->cours as $cours)
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input type="hidden" name="key2" value="{{$key2}}">
+                                    <input type="hidden" name="key" value="{{$key}}">
+                                    <input type="checkbox" class="custom-control-input" id="{{DB::table('cours_vg_niveau_etudes')->where('vg_niveau_etude_id',$data->id)->where('cour_id',$cours->id)->first()->id}}" name="checkbox[]" value="{{DB::table('cours_vg_niveau_etudes')->where('vg_niveau_etude_id',$data->id)->where('cour_id',$cours->id)->first()->id}}">
+                                    <label class="custom-control-label" for="{{DB::table('cours_vg_niveau_etudes')->where('vg_niveau_etude_id',$data->id)->where('cour_id',$cours->id)->first()->id}}">{{$cours->designation}} | {{$data->vague->designation}} | {{$data->filiere_niveau_etude->filiere->designation}} | {{$data->filiere_niveau_etude->niveau_etude->designation}}</label>
+                                </div>
+                                @endforeach
+                            @endforeach
                     @else
                         @foreach ($data as $data)
                             <div class="custom-control custom-checkbox mb-3">

@@ -1,16 +1,19 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cour;
+use App\Models\CourFormateur;
+use App\Models\CoursVgNiveauEtude;
 use App\Models\Filiere;
 use App\Models\FiliereNiveauEtude;
+use App\Models\Formateur;
 use App\Models\NiveauEtude;
 use App\Models\User;
 use App\Models\User_UserGroupe;
 use App\Models\Vague;
 use App\Models\VagueFiliereNiveauEtude;
+use App\Models\VagueFormateur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -68,7 +71,7 @@ class MethodController extends Controller
                 $this->table->designation = $request->designation;
                 $this->table->save();
                 toast('Enregistrement effectuer!','success');
-
+            
             default:
 
                 break;
@@ -88,6 +91,26 @@ class MethodController extends Controller
                 $this->table->vague_id = $request->key2;
                 $this->table->filiere_niveau_etude_id = $request->checkbox[$key];
                 $this->table->save();
+            }
+            toast('Enregistrement effectuer!','success');
+        }
+        else if($key == "cours"){
+            foreach ($request->checkbox as $key => $value) {
+                $this->table = new CoursVgNiveauEtude();
+                $this->table->cour_id = $request->key2;
+                $this->table->vg_niveau_etude_id = $request->checkbox[$key];
+                $this->table->save();
+            }
+            toast('Enregistrement effectuer!','success');
+            
+        }
+        else if($key == "formateur"){
+            foreach($request->checkbox as $k => $value){
+                $this->table = new CourFormateur();
+                $this->table->formateur_id = $request->key2;
+                $this->table->cvgnv_id = $request->checkbox[$k];
+                $this->table->save();
+
             }
             toast('Enregistrement effectuer!','success');
         }
@@ -117,5 +140,31 @@ class MethodController extends Controller
         toast('Enregistrement effectuer!','success');
 
         return redirect()->back();
+    }
+
+    public function save_personnel(Request $request)
+    {
+        $key = $request->key;
+        if ($key == 'formateur') {
+            $this->table = new Formateur();
+            $this->table->matricule = $request->matricule;
+            $this->table->nom = $request->nom;
+            $this->table->prenom = $request->prenom;
+            $this->table->email = $request->email;
+            $this->table->contact = $request->phone;
+            $this->table->save();
+
+            $id = Formateur::where("matricule",$request->matricule)->first();
+            foreach ($request->checkbox as $key => $value) {
+                $tb = new VagueFormateur();
+                $tb->formateur_id = $id->id;
+                $tb->vgflnv_id =$request->checkbox[$key];
+                $tb->save();
+            }
+            toast('Enregistrement effectuer!','success');
+
+        }
+        return redirect()->back();
+
     }
 }

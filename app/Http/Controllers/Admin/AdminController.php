@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Cour;
 use App\Models\Filiere;
 use App\Models\FiliereNiveauEtude;
+use App\Models\Formateur;
 use App\Models\NiveauEtude;
 use App\Models\User;
 use App\Models\Usergroup;
 use App\Models\Vague;
+use App\Models\VagueFiliereNiveauEtude;
+use App\Models\VagueFormateur;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -86,6 +89,12 @@ class AdminController extends Controller
             case "vague":
                 $this->table = FiliereNiveauEtude::all();
                 break;
+            case "cours":
+                $this->table = VagueFiliereNiveauEtude::all();
+                break;
+            case 'formateur':
+                $this->table = Formateur::find($key2)->vague_filiere_niveau_etudes()->get();
+                break;
             default:
                 # code...
                 break;
@@ -99,4 +108,18 @@ class AdminController extends Controller
     }
 
     
+    public function personnels($key)
+    {
+        if($key == "formateur"){
+           $this->table = Formateur::all();
+        }
+        return view('Admin.formateur',['data'=>$this->table,'key'=>$key]);
+    }
+
+    public function ajout_pers($key){
+        if ($key == "formateur") {
+            $this->table = VagueFiliereNiveauEtude::all();
+        }
+        return view('pages.ajoutFormateur',["key"=>$key, 'data'=>$this->table]);
+    }
 }

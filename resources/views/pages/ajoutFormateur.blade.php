@@ -4,7 +4,9 @@
 @endsection('style')
 @section('adminBody')
 <div class="contenu carousel slide" data-ride="carousel" id="Ajout" data-interval="1000000" data-pause="hover">
-  <form class="carousel-inner">
+  <form class="carousel-inner" method="POST" action="{{ route('store.personnel') }}">
+    @csrf
+    <input type="hidden" name="key" value="{{$key}}">
     <div class="carousel-item active">
       <div class="formulaire">
         <div class="icone bg-danger">
@@ -69,23 +71,16 @@
               <div class="top">
                   <h5>Selectionner le vague</h5>
                   <div class="card">
-                      @foreach ($vagues as $vague )
-                        @foreach($vague->vagues as $item)
-                          <div class="custom-control custom-checkbox mb-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                            <label class="custom-control-label" for="customCheck">{{$item->designation_vague}}|{{$vague->filieres_designation}}|{{$vague->niveau_etudes_designation}} </label>
-                          </div>
-                        @endforeach
+                    @if ($key == 'formateur')
+                      @foreach ($data as $data)
+                        <div class="custom-control custom-checkbox mb-3">
+                          <input type="checkbox" class="custom-control-input" id="{{$data->id}}" name="checkbox[]" value="{{$data->id}}">
+                          <label class="custom-control-label" for="{{$data->id}}">{{$data->vague->designation}}&nbsp;|&nbsp;{{$data->filiere_niveau_etude->niveau_etude->designation}}&nbsp;|&nbsp;{{$data->filiere_niveau_etude->filiere->designation}}</label>
+                        </div>
                       @endforeach
-                     
+                    @endif
                   </div>
               </div>
-              {{-- <div class="bottom">
-                <h5>Selectionner les cours</h5>
-                <div class="card">
-
-                </div>
-              </div> --}}
               <div class="button">
                 <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-database"></i>&nbsp;valider</button>
               </div>

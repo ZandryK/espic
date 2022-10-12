@@ -17,4 +17,5 @@ class Cour extends Model
     {
         return $this->belongsToMany(VagueFiliereNiveauEtude::class,CoursVgNiveauEtude::class,"cour_id","vg_niveau_etude_id");
     }
+
 }

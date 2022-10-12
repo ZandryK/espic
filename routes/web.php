@@ -64,9 +64,23 @@ Route::post("/Home/Configuration/Attribution/Add",[App\Http\Controllers\Admin\Me
 /*
     route cours
 */
-Route::get("/Home/Configurations/Cours",[App\Http\Controllers\Admin\AdminController::class,"cours"])->name("Cours");
+Route::get("/Home/Configurations/Cours",[App\Http\Controllers\Admin\AdminController::class,"cours"])->name("view.cours");
 
 /**
  * Route post cours
  */
 Route::post("/Home/configurations/Add",[App\Http\Controllers\Admin\MethodController::class,"save_cours"])->name("save.cours");
+/**
+ * Route personnels
+ */
+Route::get("/Home/Personnels/{key}",[App\Http\Controllers\Admin\AdminController::class,"personnels"])->name("view.personnels");
+/**
+ * Route Ajout personnels
+ */
+
+Route::get("/Home/Personnel/Add/{key}",[App\Http\Controllers\Admin\AdminController::class,"ajout_pers"])->name("ajout.personnels");
+/**
+ * Store personnels
+ */
+
+Route::post("/Home/Personnel/Add",[App\Http\Controllers\Admin\MethodController::class,"save_personnel"])->name("store.personnel");
