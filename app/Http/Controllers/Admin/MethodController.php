@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Cour;
 use App\Models\CourFormateur;
 use App\Models\CoursVgNiveauEtude;
+use App\Models\Etudiant;
+use App\Models\EtudiantFiliereNiveauEtude;
+use App\Models\EtudiantVague;
 use App\Models\Filiere;
 use App\Models\FiliereNiveauEtude;
 use App\Models\Formateur;
@@ -22,8 +25,12 @@ class MethodController extends Controller
     /**
      * store users
      */
-    private $message = "Enregistrement effectuer";
     private $table;
+
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * register
      * @param Request $request
@@ -114,6 +121,17 @@ class MethodController extends Controller
             }
             toast('Enregistrement effectuer!','success');
         }
+        else if($key == "etudiant")
+        {
+            foreach($request->checkbox as $k => $value){
+                $this->table = new EtudiantVague();
+                $this->table->etudiant_id = $request->key2;
+                $this->table->vgflnv_id = $request->checkbox[$k];
+                $this->table->save();
+
+            }
+            toast('Enregistrement effectuer!','success');
+        }
         else{
             foreach ($request->checkbox as $key => $value) {
                 $this->table = new FiliereNiveauEtude();
@@ -163,6 +181,24 @@ class MethodController extends Controller
             }
             toast('Enregistrement effectuer!','success');
 
+        }
+        else{
+            $this->table = new Etudiant();
+            $this->table->matricule = $request->matricule;
+            $this->table->nom = $request->nom;
+            $this->table->prenom = $request->prenom;
+            $this->table->email = $request->email;
+            $this->table->contact = $request->phone;
+            $this->table->save();
+
+            $id = Etudiant::where("matricule",$request->matricule)->first();
+            foreach ($request->checkbox as $key => $value) {
+                $tb = new EtudiantFiliereNiveauEtude();
+                $tb->etudiant_id = $id->id;
+                $tb->filiere_niveau_etude_id =$request->checkbox[$key];
+                $tb->save();
+            }
+            toast('Enregistrement effectuer!','success');
         }
         return redirect()->back();
 

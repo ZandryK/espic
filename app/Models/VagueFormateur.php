@@ -16,6 +16,6 @@ class VagueFormateur extends Model
 
     public function vague_filiere_niveau_etude()
     {
-        return $this->belongsTo(VagueFiliereNiveauEtude::class);
+        return $this->belongsTo(VagueFiliereNiveauEtude::class,'vgflnv_id');
     }
 }

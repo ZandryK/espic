@@ -13,17 +13,17 @@
             <div class="form-group">
                 <label for="matricule">Matricule</label>
                 <span class="prefix"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control" id="matricule">
+                <input type="text" class="form-control" id="matricule" value="{{auth()->user()->matricule}}">
             </div>
             <div class="form-group">
                 <label for="username">Nom utilisateur</label>
                 <span class="prefix"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control" id="username">
+                <input type="text" class="form-control" id="username" value="{{auth()->user()->name}}">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <span class="prefix"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control" id="email">
+                <input type="text" class="form-control" id="email" value=" {{auth()->user()->email}} ">
             </div>
         </form>
         <div class="button">

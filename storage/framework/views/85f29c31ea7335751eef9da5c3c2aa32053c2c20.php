@@ -38,11 +38,23 @@
                                 </div>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php elseif($key == 'etudiant'): ?>
+                                <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = $data->vagues; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $vague): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <div class="custom-control custom-checkbox mb-3">
+                                            <input type="hidden" name="key2" value="<?php echo e($key2); ?>">
+                                            <input type="hidden" name="key" value="<?php echo e($key); ?>">
+                                            <input type="checkbox" class="custom-control-input" id="<?php echo e(DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id); ?>" name="checkbox[]" value="<?php echo e(DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id); ?>">
+                                            <label class="custom-control-label" for="<?php echo e(DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id); ?>"><?php echo e($vague->designation); ?> | <?php echo e($data->filiere->designation); ?> | <?php echo e($data->niveau_etude->designation); ?></label>
+                                        </div>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php else: ?>
                         <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="custom-control custom-checkbox mb-3">
                                 <input type="hidden" name="key2" value="<?php echo e($key2); ?>">
                                 <input type="hidden" name="key" value="<?php echo e($key); ?>">
+                                
                                 <input type="checkbox" class="custom-control-input" id="<?php echo e($data->id); ?>" name="checkbox[]" value="<?php echo e($data->id); ?>">
                                 <label class="custom-control-label" for="<?php echo e($data->id); ?>"><?php echo e($data->designation); ?></label>
                             </div>

@@ -78,10 +78,17 @@
                           <label class="custom-control-label" for="{{$data->id}}">{{$data->vague->designation}}&nbsp;|&nbsp;{{$data->filiere_niveau_etude->niveau_etude->designation}}&nbsp;|&nbsp;{{$data->filiere_niveau_etude->filiere->designation}}</label>
                         </div>
                       @endforeach
+                    @elseif ($key == 'etudiant')
+                      @foreach ($data as $data)
+                        <div class="custom-control custom-checkbox mb-3">
+                          <input type="checkbox" class="custom-control-input" id="{{$data->id}}" name="checkbox[]" value="{{$data->id}}">
+                          <label class="custom-control-label" for="{{$data->id}}">{{$data->filiere->designation}}&nbsp;|&nbsp;{{$data->niveau_etude->designation}}</label>
+                        </div>
+                      @endforeach
                     @endif
                   </div>
               </div>
-              <div class="button">
+              <div class="button py-2">
                 <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-database"></i>&nbsp;valider</button>
               </div>
           </div>

@@ -84,3 +84,21 @@ Route::get("/Home/Personnel/Add/{key}",[App\Http\Controllers\Admin\AdminControll
  */
 
 Route::post("/Home/Personnel/Add",[App\Http\Controllers\Admin\MethodController::class,"save_personnel"])->name("store.personnel");
+
+/**
+ * Route add user_pers
+ */
+
+ Route::get("/Home/Personnel/Users/{key}/{id}",[App\Http\Controllers\Admin\AdminController::class,"pers_to_user"])->name("add.pers.user");
+/**
+ * Route user profil
+ */
+Route::get("/Home/Users/profil",[App\Http\Controllers\Admin\AdminController::class,"profil"])->name("user.profil");
+
+Route::get("/Home/Cours/{id}",[App\Http\Controllers\RedirectionController::class,'formateur_redirection'])->name("formateur.cours");
+
+Route::get('Home/Videos',[App\Http\Controllers\RedirectionController::class,'view_video'])->name('view.video');
+
+Route::post('/Home/Videos/Store',[App\Http\Controllers\RedirectionController::class,'store_video'])->name("store.video");
+
+Route::get('/Home/playlist/{cour_id}/{vague_id}',[App\Http\Controllers\RedirectionController::class,'etudiant_playlist'])->name('playlist');

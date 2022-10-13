@@ -9,8 +9,12 @@ use Illuminate\Validation\Rules\Exists;
 
 class LoginController extends Controller
 {
+
     public function index()
     {
+        if (Auth::check()) {
+            return redirect()->route('Home');
+        }
         return view("Auth.login");
     }
 

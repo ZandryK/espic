@@ -39,11 +39,23 @@
                                 </div>
                                 @endforeach
                             @endforeach
+                    @elseif ($key == 'etudiant')
+                                @foreach ( $data as $data)
+                                    @foreach ($data->vagues as $vague )
+                                        <div class="custom-control custom-checkbox mb-3">
+                                            <input type="hidden" name="key2" value="{{$key2}}">
+                                            <input type="hidden" name="key" value="{{$key}}">
+                                            <input type="checkbox" class="custom-control-input" id="{{DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id}}" name="checkbox[]" value="{{DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id}}">
+                                            <label class="custom-control-label" for="{{DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id}}">{{$vague->designation}} | {{$data->filiere->designation}} | {{$data->niveau_etude->designation}}</label>
+                                        </div>
+                                    @endforeach
+                                @endforeach
                     @else
                         @foreach ($data as $data)
                             <div class="custom-control custom-checkbox mb-3">
                                 <input type="hidden" name="key2" value="{{$key2}}">
                                 <input type="hidden" name="key" value="{{$key}}">
+                                
                                 <input type="checkbox" class="custom-control-input" id="{{$data->id}}" name="checkbox[]" value="{{$data->id}}">
                                 <label class="custom-control-label" for="{{$data->id}}">{{$data->designation}}</label>
                             </div>

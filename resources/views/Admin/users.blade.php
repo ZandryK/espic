@@ -5,12 +5,12 @@
 @section("adminBody")
     <div class="profil">
         <div class="contenu card">
-            <div class="card-header d-flex flex-row justify-content-between align-items-center">
+            <div class="card-header bg-white d-flex flex-row justify-content-between align-items-center">
                 <h5 class="text-capitalize"><i class="fa fa-user-cog"></i>&nbsp;Utilisateus</h5>
                 <a href="{{ route('register_view') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp;Ajouter</a>
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-striped">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

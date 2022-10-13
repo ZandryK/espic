@@ -77,10 +77,17 @@
                           <label class="custom-control-label" for="<?php echo e($data->id); ?>"><?php echo e($data->vague->designation); ?>&nbsp;|&nbsp;<?php echo e($data->filiere_niveau_etude->niveau_etude->designation); ?>&nbsp;|&nbsp;<?php echo e($data->filiere_niveau_etude->filiere->designation); ?></label>
                         </div>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php elseif($key == 'etudiant'): ?>
+                      <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="custom-control custom-checkbox mb-3">
+                          <input type="checkbox" class="custom-control-input" id="<?php echo e($data->id); ?>" name="checkbox[]" value="<?php echo e($data->id); ?>">
+                          <label class="custom-control-label" for="<?php echo e($data->id); ?>"><?php echo e($data->filiere->designation); ?>&nbsp;|&nbsp;<?php echo e($data->niveau_etude->designation); ?></label>
+                        </div>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php endif; ?>
                   </div>
               </div>
-              <div class="button">
+              <div class="button py-2">
                 <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-database"></i>&nbsp;valider</button>
               </div>
           </div>

@@ -4,7 +4,7 @@
 @endsection('style')
 @section('adminBody')
 <div class="profil">
-    <nav class="navbar navbar-expand-sm bg-light navbar-light d-flex flex-row">
+    <nav class="navbar navbar-expand-sm navbar-light d-flex flex-row">
         <a href="" class="navbar-brand text-capitalize"><i class="fa fa-cogs"></i>&nbsp;{{$key}}</a>
         <form class="form-inline ml-auto " method="POST" action="{{ route('save.configuration') }}">
             @csrf
@@ -14,12 +14,12 @@
         </form>
       </nav> 
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table">
             <thead>
                 <tr class="justify-content-center">
-                    <th scope="col" class="text-start w-25">#</th>
-                    <th scope="col" class="text-start w-25">Designation</th>
-                    <th scope="col" class="text-start w-50">Action</th>
+                    <th scope="col" class="text-start " style="width: 30%;">#</th>
+                    <th scope="col" class="text-start " style="width: 30%;">Designation</th>
+                    <th scope="col" class="text-start " style="width: 40%;">Action</th>
                 </tr>
             </thead>
         <tbody>

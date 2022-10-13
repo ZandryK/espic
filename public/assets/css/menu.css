@@ -41,7 +41,7 @@ section#content .container-fluid .content .content-menu div .card{
     padding: 0;
 }
 section#content .container-fluid .content .content-menu div .card:hover{
-    background-color:#1f8aa6;
+    background-color:#039c5f;
   
 }
 section#content .container-fluid .content .content-menu div .card figure{
@@ -71,9 +71,13 @@ section#content .container-fluid .content .content-menu div.center .card{
     width: 31.5%;
     
 }
+section#content .container-fluid .content .content-menu div .card figure figcaption h3{
+    color:#0b0e0fd7 !important;
+}
 section#content .container-fluid .content .content-menu div .card figure figcaption{
     display: flex;
     flex-direction: column;
+    
 
 }
 section#content .container-fluid .content .content-menu div .card figure span{
@@ -84,7 +88,7 @@ section#content .container-fluid .content .content-menu div .card figure span{
     height: 100%;
 }
 section#content .container-fluid .content .content-menu div .card figure span i{
-    color:#1f8aa6;
+    color:#039c76;
     font-size: 40px;
 }
 section#content .container-fluid .content .content-menu div .card:hover figure span i{

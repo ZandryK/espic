@@ -13,4 +13,9 @@ class CourFormateur extends Model
         'formateur_id',
         'cvgnv_id',
     ];
+
+    public function cours_vague_niveau_etude()
+    {
+        return $this->belongsTo(CoursVgNiveauEtude::class,'cvgnv_id');
+    }
 }

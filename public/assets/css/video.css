@@ -1,0 +1,103 @@
+@font-face {
+    font-family: "Inter-regular";
+    src: url("../fonts/Inter/static/Inter-Regular.ttf");
+
+    font-family: "Inter-sm-bold";
+    src:url("../fonts/Inter/static/Inter-SemiBold.ttf");
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Inter-regular";
+    font-size: 16px;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.profil{
+    width: 80%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 1px 1px rgb(199, 198, 198);
+}
+.profil form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.profil form .form {
+    height: 100%;
+    width: 50%;
+}
+.profil form .input-file{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 2%;
+    row-gap: 5px;
+    font-family: "Inter-Regular";
+
+}
+.profil form .input-file h3{
+    font-family: "Inter-Regular";
+    font-size: 20px;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.profil form .input-file .btnwarning{
+    position: relative;
+    padding: 11px 16px;
+    font-size: 2px;
+    line-height: 1.5;
+    color: gray;
+    background-color: transparent;
+    overflow: hidden;
+    height: 100px;
+    width: 100%;
+    box-shadow:0 1px 1px gray;
+    border: none;
+    border-radius: 25px;
+
+}
+.profil form .input-file .btnwarning input[type='file']{
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scale(5);
+    opacity: 1; 
+    width: 100px;
+    height: 100px;
+
+}
+.profil form .input-check{
+    display: flex;
+    flex-direction: column;
+}
+
+.profil form .input-check h3{
+    font-family: "Inter-Regular";
+    font-weight: 200;
+    font-size: 20px;
+    margin-top: 2%;
+    text-align: center;
+}
+.profil form .input-check .check{
+    height: inherit;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+@media screen and (max-width:720px) {
+    form{
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+    }
+}

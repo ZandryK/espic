@@ -4,108 +4,49 @@
 @endsection('style')
 
 @section('adminBody')
+<h1>
+    @if ($usr_grp == "Formateurs")
+        {{" Mes vagues"}}
+    @elseif ($usr_grp == "Etudiants")
+        {{"Mes cours"}}
+    @endif
+</h1>
 <div class="content-center">
     <div class="etudiant-content">
+        @if ($usr_grp == "Formateurs")
+            @foreach ($data as $data )
+                <div class="card">
+                    <figure>
+                        <span class="icone"><i class="fa fa-book"></i></span>
+                        <figcaption>
+                            <h3>{{$data->vague_filiere_niveau_etude->filiere_niveau_etude->filiere->designation}}&nbsp;|
+                                &nbsp;{{$data->vague_filiere_niveau_etude->filiere_niveau_etude->niveau_etude->designation}}
+                            </h3>
+                            <p><span><i class="fa fa-clock-o"></i></span>&nbsp;{{$data->vague_filiere_niveau_etude->vague->designation}}</p>
+                            <a href="{{ route('formateur.cours', ['id'=>$data->vague_filiere_niveau_etude->id]) }}" class="btn btn-info btn-sm">Go</a>
+                        </figcaption>
+                    </figure>
+                </div>
+            @endforeach
+        @elseif ($usr_grp == "Etudiants")
         <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
+            @foreach ($data as $data )
+                @foreach ($data->vague_filiere_niveau_etude->cours as $cour )
+                    <figure>
+                        <span class="icone"><i class="fa fa-book"></i></span>
+                        <figcaption>
+                            <h3>
+                            
+                                {{$cour->designation}}
+                            </h3>
+                            <p><span><i class="fa fa-clock-o"></i></span>&nbsp;{{$cour->duree}}</p>
+                            <a href="{{ route('playlist', ['cour_id'=>$cour->id,'vague_id'=>$data->vague_filiere_niveau_etude->id]) }}" class="btn btn-info btn-sm">Voir plus</a>
+                        </figcaption>
+                    </figure>
+                @endforeach
+            @endforeach
         </div>
-        <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="card">
-            <figure>
-                <span class="icone"><i class="fa fa-book"></i></span>
-                <figcaption>
-                    <h3>Nom du cours</h3>
-                    <p><span><i class="fa fa-clock-o"></i></span>&nbsp;17mois</p>
-                    <button class="btn btn-info btn-sm">Voir plus</button>
-                </figcaption>
-            </figure>
-        </div>
+        @endif
     </div>
     
 </div>

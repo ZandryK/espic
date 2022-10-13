@@ -66,13 +66,13 @@
             </a>
         </div>
         <div class="card">
-            <a href="">
+            <a href="<?php echo e(route('view.personnels',["key"=>"etudiant"])); ?>">
                 <figure>
                     <span><i class="fa fa-user"></i></span>
                     <figcaption>
                         <h3>Etudiants</h3>
                         <p>Gerer vos etudiants, ajouter, supprimer, modifier</p>
-                        <a href="">voir plus</a>
+                        <a href="<?php echo e(route('view.personnels',["key"=>"etudiant"])); ?>">voir plus</a>
                     </figcaption>
                 </figure>
             </a>

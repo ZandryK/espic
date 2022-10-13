@@ -14,6 +14,7 @@ class CoursVgNiveauEtude extends Model
         "vg_niveau_etude_id",
     ];
 
+    
     public function cour()
     {
         return $this->belongsTo(Cour::class);
@@ -21,11 +22,16 @@ class CoursVgNiveauEtude extends Model
 
     public function vague_filiere_niveau_etude()
     {
-        return $this->belongsTo(VagueFiliereNiveauEtude::class);
+        return $this->belongsTo(VagueFiliereNiveauEtude::class,'vg_niveau_etude_id');
     }
 
     public function formateurs()
     {
         return $this->belongsToMany(Formateur::class, CourFormateur::class,'cvgnv_id','formateur_id');
+    }
+
+    public function videos()
+    {
+        return $this->belongsToMany(Video::class, VideoAcces::class,'cour_vgnve_id','video_id');
     }
 }

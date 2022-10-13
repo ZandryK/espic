@@ -16,5 +16,14 @@ class Etudiant extends Model
         'contact',
     ];
 
+    public function filiere_niveau_etudes()
+    {
+        return $this->belongsToMany(FiliereNiveauEtude::class, EtudiantFiliereNiveauEtude::class, "etudiant_id","filiere_niveau_etude_id");
+    }
+
+    public function vague_filiere_niveau_etudes()
+    {
+        return $this->belongsToMany(VagueFiliereNiveauEtude::class, EtudiantVague::class);
+    }
     
 }

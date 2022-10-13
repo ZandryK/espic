@@ -21,14 +21,14 @@
             <span class="text logo">ESC-ESPIC</span>
         </a>
         <ul class="side-menu top">
-            <li class="">
-                <a href="">
+            <li class="<?php echo e(request()->url() == route('Home') ? 'active':''); ?>">
+                <a href=" <?php echo e(route('Home')); ?> ">
                     <i class="fa fa-dashboard"></i>
                     <span class="text">Menu</span>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li class="<?php echo e(request()->url() == route('user.profil') ? 'active':''); ?>">
+                <a href="<?php echo e(route('user.profil')); ?>">
                     <i class="fa fa-user"></i>
                     <span class="text">Pofil</span>
                 </a>

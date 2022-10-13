@@ -14,8 +14,9 @@ class FiliereNiveauEtude extends Model
         'niveau_etude_id'
     ];
 
+    
     public function vagues(){
-        return $this->belongsToMany(Vague::class,VagueFiliereNiveauEtude::class,"vague_id","filiere_niveau_etude_id");
+        return $this->belongsToMany(Vague::class,VagueFiliereNiveauEtude::class,"filiere_niveau_etude_id","vague_id");
     }
 
     public function filiere(){
