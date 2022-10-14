@@ -102,3 +102,9 @@ Route::get('Home/Videos',[App\Http\Controllers\RedirectionController::class,'vie
 Route::post('/Home/Videos/Store',[App\Http\Controllers\RedirectionController::class,'store_video'])->name("store.video");
 
 Route::get('/Home/playlist/{cour_id}/{vague_id}',[App\Http\Controllers\RedirectionController::class,'etudiant_playlist'])->name('playlist');
+
+/**
+ * Route Post attribution video
+ */
+
+Route::post('/Home/videos/Attribution',[App\Http\Controllers\RedirectionController::class,'video_attribution'])->name('store.video.attribution');

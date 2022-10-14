@@ -27,10 +27,6 @@ class RedirectionController extends Controller
 
     public function store_video(Request $request)
     {
-        $request->validate([
-            'link'=>'required|mimes:mp4,MP4,mkv,avi,webm,flv'
-        ]);
-
         $file = $request->file('link');
         $file->move('upload',$file->getClientOriginalName());
         $file_name = $file->getClientOriginalName();
@@ -39,19 +35,21 @@ class RedirectionController extends Controller
         $media->title = $request->title;
         $media->description = $request ->description;
         $media->link = $file_name;
-        $media->auteur = auth()->user()->matricule;
+        $media->auteur = $request->auteur;
         $media->save();
-        
-        $video = Video::where('link',$file_name)->first()->id;
+        return redirect()->back();
+    }
+
+    public function video_attribution(Request $request){
+        $link = $request->return_link;
+        $video = Video::where('link',$link)->first()->id;
         foreach ($request->checkbox as $key => $value) {
             $attribution = new VideoAcces();
             $attribution->video_id = $video;
             $attribution->cour_vgnve_id = $request->checkbox[$key];
             $attribution->save();
         }
-        return redirect()->back();
     }
-
 
     public function etudiant_playlist($cour_id, $vague_id)
     {

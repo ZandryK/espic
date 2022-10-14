@@ -39,6 +39,14 @@
                     <span class="text">Paramètre</span>
                 </a>
             </li>
+            <?php if(auth()->user()->usergroups->contains('group_name','formateur') || auth()->user()->usergroups->contains('group_name','Formateur') || auth()->user()->usergroups->contains('group_name','Formateurs')): ?>
+            <li>
+                <a href="<?php echo e(route('view.video')); ?>">
+                    <i class="fa fa-video-camera"></i>
+                    <span class="text">Envoyer Cours</span>
+                </a>
+            </li>
+            <?php endif; ?>
         </ul>
         <ul class="side-menu bottom">
             <li>

@@ -37,7 +37,8 @@ class AdminController extends Controller
         if (Auth::check()) {
             $user = auth()->user()->usergroups;
             if($user->contains("group_name","Super Admin") || $user->contains("group_name","Super Administrateur") || $user->contains("group_name","Super admin")){
-                return view("Admin.menu");
+                $usr_grp = 'SuperAdmin';
+                return view("Admin.menu",compact('usr_grp'));
             }else{
                 if($user->contains('group_name','formateur') || $user->contains('group_name','Formateur') || $user->contains('group_name','Formateurs')){
                    $this->usr = VagueFormateur::where('formateur_id',Formateur::where('matricule',auth()->user()->matricule)->first()->id)->get();
