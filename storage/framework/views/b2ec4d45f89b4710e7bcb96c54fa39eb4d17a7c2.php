@@ -39,7 +39,15 @@
                     <span class="text">Paramètre</span>
                 </a>
             </li>
-            <?php if(auth()->user()->usergroups->contains('group_name','formateur') || auth()->user()->usergroups->contains('group_name','Formateur') || auth()->user()->usergroups->contains('group_name','Formateurs')): ?>
+            <?php if(auth()->user()->usergroups->count() >=2 ): ?>
+            <li>
+                <a href="<?php echo e(route('change.compte', ['session'=>session()->get('usr_grp')])); ?>">
+                    <i class="fa fa-user-plus"></i>
+                    <span class="text">Changer de compte</span>
+                </a>
+            </li>
+            <?php endif; ?>
+            <?php if(session()->get('usr_grp') == "Formateurs"): ?>
             <li>
                 <a href="<?php echo e(route('view.video')); ?>">
                     <i class="fa fa-video-camera"></i>
@@ -47,6 +55,7 @@
                 </a>
             </li>
             <?php endif; ?>
+
         </ul>
         <ul class="side-menu bottom">
             <li>

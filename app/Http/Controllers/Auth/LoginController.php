@@ -27,7 +27,7 @@ class LoginController extends Controller
         $credential = $request->only("matricule","password");
         if (Auth::attempt($credential)) {
             $request->session()->regenerate();
-            return redirect()->intended("/Home");
+            return redirect()->intended("/Check");
         }
         
         return back()->withErrors([

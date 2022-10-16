@@ -4,17 +4,17 @@
 
 <?php $__env->startSection('adminBody'); ?>
 <h1>
-    <?php if($usr_grp == "Formateurs"): ?>
+    <?php if(session()->get('usr_grp') == "Formateurs"): ?>
         <?php echo e(" Mes vagues"); ?>
 
-    <?php elseif($usr_grp == "Etudiants"): ?>
+    <?php elseif(session()->get('usr_grp') == "Etudiants"): ?>
         <?php echo e("Mes cours"); ?>
 
     <?php endif; ?>
 </h1>
 <div class="content-center">
     <div class="etudiant-content">
-        <?php if($usr_grp == "Formateurs"): ?>
+        <?php if(session()->get('usr_grp') == "Formateurs"): ?>
             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="card">
                     <figure>
@@ -30,7 +30,7 @@
                     </figure>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <?php elseif($usr_grp == "Etudiants"): ?>
+        <?php elseif(session()->get('usr_grp') == "Etudiants"): ?>
         <div class="card">
             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php $__currentLoopData = $data->vague_filiere_niveau_etude->cours; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cour): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

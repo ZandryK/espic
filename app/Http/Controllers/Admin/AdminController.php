@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use App\Models\EtudiantVague;
 use Illuminate\Support\Facades\Auth;
 use App\Models\VagueFiliereNiveauEtude;
+use Illuminate\Contracts\Session\Session;
 
 class AdminController extends Controller
 {
@@ -32,33 +33,79 @@ class AdminController extends Controller
     /**
      * @return view(admin.menu)
      */
-    public function index()
+    public function index(Request $request)
     {
+
         if (Auth::check()) {
             $user = auth()->user()->usergroups;
             if($user->contains("group_name","Super Admin") || $user->contains("group_name","Super Administrateur") || $user->contains("group_name","Super admin")){
                 $usr_grp = 'SuperAdmin';
-                return view("Admin.menu",compact('usr_grp'));
+                $request->session()->put('usr_grp',$usr_grp);
             }else{
-                if($user->contains('group_name','formateur') || $user->contains('group_name','Formateur') || $user->contains('group_name','Formateurs')){
-                   $this->usr = VagueFormateur::where('formateur_id',Formateur::where('matricule',auth()->user()->matricule)->first()->id)->get();
+                if($user->contains('group_name','Admin') || $user->contains('group_name','Administrateur') || $user->contains('group_name','admin') || $user->contains('group_name','administrateur')){
+                    $usr_grp = 'Admin';
+                    $request->session()->put('usr_grp',$usr_grp);
+                 }
+                else if($user->contains('group_name','formateur') || $user->contains('group_name','Formateur') || $user->contains('group_name','Formateurs')){
+                  
                    $this->usr_group = "Formateurs";
-                   return view('home.menu',['data'=>$this->usr,"usr_grp"=>$this->usr_group]);
+                   $request->session()->put('usr_grp',$this->usr_group);
+                   
                 }
                 else if($user->contains("group_name","etudiant") || $user->contains("group_name","Etudiant") || $user->contains("group_name","etudiants") || $user->contains("group_name","Etudiants"))
                 {
-                    $this->usr = EtudiantVague::where("etudiant_id",Etudiant::where('matricule',auth()->user()->matricule)->first()->id)->get();
                     $this->usr_group = "Etudiants";
-                    return view('home.menu',['data'=>$this->usr,"usr_grp"=>$this->usr_group]);
+                    $request->session()->put('usr_grp',$this->usr_group);
 
                 }
-               
+
             }
         }
-       
-        return redirect()->back();
+
+        return redirect()->route('Home');
     }
 
+    public function home(Request $request){
+        switch ($request->session()->get('usr_grp')) {
+            case 'Formateurs':
+                $this->usr = VagueFormateur::where('formateur_id',Formateur::where('matricule',auth()->user()->matricule)->first()->id)->get();
+                return view('home.menu',['data'=>$this->usr]);
+                break;
+            case 'Etudiants':
+                $this->usr = EtudiantVague::where("etudiant_id",Etudiant::where('matricule',auth()->user()->matricule)->first()->id)->get();
+                return view('home.menu',['data'=>$this->usr]);
+                break;
+            default:
+                return view("Admin.menu");
+                break;
+        }
+        return redirect()->back();
+    }
+    public function changecompte(Request $request, $session){
+        $user = auth()->user()->usergroups;
+        $request->session()->forget('usr_grp');
+        if($session == "Formateurs"){
+            if($user->contains("group_name","Super Admin") || $user->contains("group_name","Super Administrateur") || $user->contains("group_name","Super admin")){
+                $usr_grp = 'SuperAdmin';
+                $request->session()->put('usr_grp',$usr_grp);
+            }
+            else if($user->contains('group_name','Admin') || $user->contains('group_name','Administrateur') || $user->contains('group_name','admin') || $user->contains('group_name','administrateur')){
+                $usr_grp = 'Admin';
+                $request->session()->put('usr_grp',$usr_grp);
+            }
+        }
+        else{
+            $this->usr_group = "Formateurs";
+            $request->session()->put('usr_grp',$this->usr_group);
+        }
+        return redirect()->route('Home');
+        
+    }
+
+    /**
+     * 
+     * Return view profil
+     */
     public function profil()
     {
         return view("home.profil");
@@ -138,7 +185,7 @@ class AdminController extends Controller
         return view("Admin.cours",compact("data"));
     }
 
-    
+
     public function personnels($key)
     {
         if($key == "formateur"){

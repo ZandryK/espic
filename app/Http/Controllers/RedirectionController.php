@@ -49,11 +49,19 @@ class RedirectionController extends Controller
             $attribution->cour_vgnve_id = $request->checkbox[$key];
             $attribution->save();
         }
+        toast('Video publier','success');
+        return redirect()->route('Home');
     }
 
     public function etudiant_playlist($cour_id, $vague_id)
     {
         $videos =CoursVgNiveauEtude::where("cour_id",$cour_id)->where("vg_niveau_etude_id",$vague_id)->first()->videos()->get();
-        return view('home.videos',compact('videos'));
+        return view('home.myvideos',compact('videos','cour_id','vague_id'));
+    }
+
+    public function similaire($cour_id, $vague_id,$video_id)
+    {
+        $videos =CoursVgNiveauEtude::where("cour_id",$cour_id)->where("vg_niveau_etude_id",$vague_id)->first()->videos()->get();
+        return view('home.videos',compact('videos','cour_id','video_id'));
     }
 }

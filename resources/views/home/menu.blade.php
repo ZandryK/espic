@@ -5,15 +5,15 @@
 
 @section('adminBody')
 <h1>
-    @if ($usr_grp == "Formateurs")
+    @if (session()->get('usr_grp') == "Formateurs")
         {{" Mes vagues"}}
-    @elseif ($usr_grp == "Etudiants")
+    @elseif (session()->get('usr_grp') == "Etudiants")
         {{"Mes cours"}}
     @endif
 </h1>
 <div class="content-center">
     <div class="etudiant-content">
-        @if ($usr_grp == "Formateurs")
+        @if (session()->get('usr_grp') == "Formateurs")
             @foreach ($data as $data )
                 <div class="card">
                     <figure>
@@ -28,7 +28,7 @@
                     </figure>
                 </div>
             @endforeach
-        @elseif ($usr_grp == "Etudiants")
+        @elseif (session()->get('usr_grp') == "Etudiants")
         <div class="card">
             @foreach ($data as $data )
                 @foreach ($data->vague_filiere_niveau_etude->cours as $cour )

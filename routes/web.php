@@ -18,8 +18,8 @@ Route::get("/",[App\Http\Controllers\Home\HomeController::class,"index"])->name(
  * Route Admin Menu return view indexAdmin
  *
  */
-
- Route::get("/Home",[App\Http\Controllers\Admin\AdminController::class,"index"])->name("Home");
+Route::get("/Check",[App\Http\Controllers\Admin\AdminController::class,"index"])->name("check.session");
+ Route::get("/Home",[App\Http\Controllers\Admin\AdminController::class,"home"])->name("Home");
 
  /**
   * Route Admin filiere list
@@ -108,3 +108,14 @@ Route::get('/Home/playlist/{cour_id}/{vague_id}',[App\Http\Controllers\Redirecti
  */
 
 Route::post('/Home/videos/Attribution',[App\Http\Controllers\RedirectionController::class,'video_attribution'])->name('store.video.attribution');
+
+/**
+ * Route Redirection change
+ */
+
+Route::get('/Home/Second/{session}',[App\Http\Controllers\Admin\AdminController::class,'changecompte'])->name('change.compte');
+
+/**
+ * 
+ */
+Route::get('/Home/Watch/{cour_id}/{vague_id}/{video_id}',[App\Http\Controllers\RedirectionController::class,'similaire'])->name('similaire');

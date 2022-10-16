@@ -3,19 +3,21 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 @endsection('style')
 @section('adminBody')
-<h3 class="heding"><i class="fa fa-book"></i>&nbsp;JAVA</h3>
-    <div class="container">
+<h3 class="heding"><i class="fa fa-book"></i>&nbsp;{{DB::table('cours')->where('id',$cour_id)->first()->designation}}</h3>
+    <div class="contents">
         <div class="main-video">
             <div class="video active">
-                <video src="" controls muted poster="{{ asset('assets/images/Banners/fond-1.jpg') }}"></video>
-                <h3 class="title">Videos avec ajax</h3>
+                <video src="{{ asset('upload').'/'.DB::table('videos')->where('id',$video_id)->first()->link}}" controls muted></video>
+                <h3 class="title">{{DB::table('videos')->where('id',$video_id)->first()->title}}</h3>
+                <p class="description">{{DB::table('videos')->where('id',$video_id)->first()->description}}</p>
             </div>
         </div>
         <div class="video-list">
             @foreach ($videos as $video)
                 <div class="vid">
                     <video src="{{ asset('upload').'/'.$video->link }}" muted></video>
-                    <h3 class="title">playliste 1</h3>
+                    <h3 class="title"> {{$video->title}} </h3>
+                    <p class="description" hidden>{{$video->description}}</p>
                 </div>
            @endforeach
         </div>

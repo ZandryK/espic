@@ -13,7 +13,7 @@ class LogoutController extends Controller
     {
         $this->middleware("auth");
     }
-    public function logout()
+    public function logout(Request $request)
     {
         Session::flush();
         Auth::logout();

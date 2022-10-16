@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "Inter-regular";
+    src: url("../fonts/Inter/static/Inter-Regular.ttf");
+
+    font-family: "Inter-sm-bold";
+    src:url("../fonts/Inter/static/Inter-SemiBold.ttf");
+}
+.content{
+justify-content: flex-start !important;
+align-items: flex-start !important;
+height: 100%;
+}
+.content h1{
+    font-family: 'Inter-sm-bold';
+    font-size: 20px;
+    margin-top:0 !important ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+.content .contenu{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.content .contenu .myvideos-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    row-gap: 10px;
+    padding-left: 2%;
+    padding-right: 2%;
+    flex-wrap: wrap;
+}
+.content .contenu .myvideos-content .card{
+    height: 350px;
+    box-shadow: 0 1px 1px rgba(180, 180, 180, 0.774);
+    border: 0;
+}
+.content .contenu .myvideos-content div a{
+    color: inherit;
+    text-decoration: none;
+}
+.content .contenu .myvideos-content .card :where(h3 , p){
+    font-family: "Inter-regular";
+}
