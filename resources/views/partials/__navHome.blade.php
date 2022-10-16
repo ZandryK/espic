@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <!-- Navbar brand -->
     <div class="container">
-     <a class="navbar-brand" href="#">ESPIC</a>
+     <a class="navbar-brand" href="#">ESC&ESPIC</a>
      <!-- Collapse button -->
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
          aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
