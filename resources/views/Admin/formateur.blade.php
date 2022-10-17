@@ -33,7 +33,7 @@
                         <td>{{$value->contact}}</td>
                         <td>
                             <a href="{{ route('attribution', ['key'=>$key,'key2'=>$value->id]) }}" class="btn btn-info btn-sm" title="vagues"><i class="fa fa-edit"></i></a>
-                            <a href="" class="btn btn-outline-danger btn-sm" title="supprimer"><i class="fa fa-trash"></i></a>
+                            <a href="{{ route('delete.personnel', ['key'=>$key,'id'=>$value->id]) }}" class="btn btn-outline-danger btn-sm" title="supprimer"><i class="fa fa-trash"></i></a>
                             <a href="" class="btn btn-outline-success btn-sm" title="Voir" ><i class="fa fa-eye"></i></a>
                             <a href="{{ route('add.pers.user', ['key'=>$key,'id'=>$value->id]) }}" class="btn btn-outline-primary btn-sm" title="Ajouter comme utilisateur"><i class="fa fa-user-plus"></i></a>
                         </td>

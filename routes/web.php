@@ -119,3 +119,20 @@ Route::get('/Home/Second/{session}',[App\Http\Controllers\Admin\AdminController:
  * 
  */
 Route::get('/Home/Watch/{cour_id}/{vague_id}/{video_id}',[App\Http\Controllers\RedirectionController::class,'similaire'])->name('similaire');
+
+
+
+/**
+ * ROUTE DELETE
+ */
+
+ Route::get('/Home/Personnels/Delete/{key}/{id}',[App\Http\Controllers\Admin\DeleteController::class,'delete_personnels'])->name('delete.personnel');
+
+ /**
+  * delete configuration
+  */
+Route::get('/Home/Configuration/Delete/{key}/{id}',[App\Http\Controllers\Admin\DeleteController::class,'delete_configuration'])->name('delete.configuration');
+
+Route::get('/Home/Cour/Delete/{id}',[App\Http\Controllers\Admin\DeleteController::class,'delete_cours'])->name('delete.cours');
+
+Route::get('/Home/Users/{id}',[App\Http\Controllers\Admin\DeleteController::class,'delete_user'])->name('delete.users');

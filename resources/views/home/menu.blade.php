@@ -14,7 +14,7 @@
 <div class="content-center">
     <div class="etudiant-content">
         @if (session()->get('usr_grp') == "Formateurs")
-            @foreach ($data as $data )
+            @forelse ($data as $data )
                 <div class="card">
                     <figure>
                         <span class="icone"><i class="fa fa-book"></i></span>
@@ -27,25 +27,31 @@
                         </figcaption>
                     </figure>
                 </div>
-            @endforeach
+            @empty
+            <h1 class="text-center">Aucun vague</h1>
+            @endforelse
         @elseif (session()->get('usr_grp') == "Etudiants")
-        <div class="card">
-            @foreach ($data as $data )
+        
+            @forelse ($data as $data )
                 @foreach ($data->vague_filiere_niveau_etude->cours as $cour )
-                    <figure>
-                        <span class="icone"><i class="fa fa-book"></i></span>
-                        <figcaption>
-                            <h3>
-                            
-                                {{$cour->designation}}
-                            </h3>
-                            <p><span><i class="fa fa-clock-o"></i></span>&nbsp;{{$cour->duree}}</p>
-                            <a href="{{ route('playlist', ['cour_id'=>$cour->id,'vague_id'=>$data->vague_filiere_niveau_etude->id]) }}" class="btn btn-info btn-sm">Voir plus</a>
-                        </figcaption>
-                    </figure>
+                    <div class="card">
+                        <figure>
+                            <span class="icone"><i class="fa fa-book"></i></span>
+                            <figcaption>
+                                <h3>
+                                
+                                    {{$cour->designation}}
+                                </h3>
+                                <p><span><i class="fa fa-clock-o"></i></span>&nbsp;{{$cour->duree}}</p>
+                                <a href="{{ route('playlist', ['cour_id'=>$cour->id,'vague_id'=>$data->vague_filiere_niveau_etude->id]) }}" class="btn btn-info btn-sm">Voir plus</a>
+                            </figcaption>
+                        </figure>
+                    </div>
                 @endforeach
-            @endforeach
-        </div>
+            @empty
+                    <h1 class="text-center">Aucun cours</h1>
+            @endforelse
+        
         @endif
     </div>
     

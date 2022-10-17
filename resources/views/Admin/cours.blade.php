@@ -27,7 +27,7 @@
                             <td>{{$item->duree}}</td>
                             <td>
                                 <a href="{{route('attribution',['key'=>'cours','key2'=>$item->id])}}" class="btn btn-info btn-sm"><i class="fa fa-edit">&nbsp;Attribution</i></a>
-                                <a href="" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;<span>supprimer</span></a>
+                                <a href="{{ route('delete.cours', ['id'=>$item->id]) }}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;<span>supprimer</span></a>
                                 <a href="" class="btn btn-outline-success btn-sm"><i class="fa fa-eye"></i>&nbsp;<span>edit</span></a>
                             </td>
                         </tr>

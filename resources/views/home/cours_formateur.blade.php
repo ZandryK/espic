@@ -5,11 +5,11 @@
 
 @section('adminBody')
 <h1>
-    =>&nbsp;cours
+    Mes&nbsp;cours
 </h1>
 <div class="content-center">
     <div class="etudiant-content">
-            @foreach ($cours as $data )
+            @forelse ($cours as $data )
                 <div class="card">
                     <figure>
                         <span class="icone"><i class="fa fa-book"></i></span>
@@ -22,7 +22,9 @@
                         </figcaption>
                     </figure>
                 </div>
-            @endforeach
+            @empty
+                <h1 class="text-center">Aucun cours</h1>
+            @endforelse
     </div>
     
     
