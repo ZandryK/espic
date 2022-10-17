@@ -41,7 +41,7 @@
                         <a href="{{ route('attribution', ['key'=>$key,"key2"=>$data->designation_vague]) }}" class="btn btn-info btn-sm"><i class="fa fa-plus"></i><span>&nbsp;Attribution</span></a>
                         @endif
                         <a href="{{ route('delete.configuration', ['key'=>$key,'id'=>$data->id]) }}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i><span>&nbsp;Supprimer</span></a>
-                        <a href="" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i><span>&nbsp;Edit</span></a>
+                        <a href="{{ route('edit.configuration', ['key'=>$key,'id'=>$data->id]) }}" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i><span>&nbsp;Edit</span></a>
                     </td>
                 </tr>
             @endforeach

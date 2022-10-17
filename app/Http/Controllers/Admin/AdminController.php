@@ -41,26 +41,26 @@ class AdminController extends Controller
             if($user->contains("group_name","Super Admin") || $user->contains("group_name","Super Administrateur") || $user->contains("group_name","Super admin")){
                 $usr_grp = 'SuperAdmin';
                 $request->session()->put('usr_grp',$usr_grp);
-            }else{
-                if($user->contains('group_name','Admin') || $user->contains('group_name','Administrateur') || $user->contains('group_name','admin') || $user->contains('group_name','administrateur')){
+            }else if($user->contains('group_name','Admin') || $user->contains('group_name','Administrateur') || $user->contains('group_name','admin') || $user->contains('group_name','administrateur')){
                     $usr_grp = 'Admin';
                     $request->session()->put('usr_grp',$usr_grp);
-                 }
-                else if($user->contains('group_name','formateur') || $user->contains('group_name','Formateur') || $user->contains('group_name','Formateurs')){
+            }
+            else if($user->contains('group_name','formateur') || $user->contains('group_name','Formateur') || $user->contains('group_name','Formateurs')){
                   
                    $this->usr_group = "Formateurs";
                    $request->session()->put('usr_grp',$this->usr_group);
                    
-                }
-                else if($user->contains("group_name","etudiant") || $user->contains("group_name","Etudiant") || $user->contains("group_name","etudiants") || $user->contains("group_name","Etudiants"))
-                {
+            }
+            else if($user->contains("group_name","etudiant") || $user->contains("group_name","Etudiant") || $user->contains("group_name","etudiants") || $user->contains("group_name","Etudiants"))
+            {
                     $this->usr_group = "Etudiants";
                     $request->session()->put('usr_grp',$this->usr_group);
 
-                }
+            }else{
+                return view('Error.compte');
+            }
 
             }
-        }
 
         return redirect()->route('Home');
     }

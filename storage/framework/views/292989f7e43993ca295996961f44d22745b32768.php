@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <!-- Navbar brand -->
     <div class="container">
-     <a class="navbar-brand" href="#">ESC&ESPIC</a>
+     <a class="navbar-brand h-100 my-0" href="#"><img src="<?php echo e(asset('assets/images/logo/logo.png')); ?>" alt="" srcset="" style="height: 50px; width:100px;" ></a>
      <!-- Collapse button -->
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
          aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">

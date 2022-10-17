@@ -5,7 +5,32 @@
 
 @section("adminBody")
     <div class="profil">
-        <h3 style="font-size:12px ;"><i class="fa fa-cog"></i>&nbsp;Merci de choisir les champs pour attribuer cette {{$key}} </h3>
+        <h3 style="font-size:12px ;"><i class="fa fa-cog"></i>&nbsp;
+            @isset($key)
+                @switch($key)
+                    @case("filiere")
+                        {{"Merci de choisir les les niveau d'etude pour cette filiere"}}
+                        @break
+                    @case("niveau d'etude")
+                        {{"Merci de choisir le(s) filiere(s) pour cette niveau d'etude"}}
+                        @break
+                    @case("formateur")
+                        {{"Merci de choisir les cours pour ce formateur"}}
+                        @break
+                    @case("etudiant")
+                        {{"Merci de choisir le(les) vague(s) pour cette etudiant"}}
+                        @break
+                    @case("cours")
+                        {{"Merci de choisir les vagues qui peut acceder à ce cours"}}
+                        @break
+                    @case('vague')
+                        {{"Merci de choisir les filière et niveau d'etude pour cette vague"}}
+                        @break
+                    @default
+                        @break
+                @endswitch
+            @endisset
+        </h3>
         <div class="card">
             <form action="{{ route('attribution.store') }}" method="POST">
                 @csrf
@@ -15,7 +40,7 @@
                         <div class="custom-control custom-checkbox mb-3">
                             <input type="hidden" name="key2" value="{{$key2}}">
                             <input type="hidden" name="key" value="{{$key}}">
-                            <input type="checkbox" class="custom-control-input" id="{{$data->id}}" name="checkbox[]" value="{{$data->id}}">
+                            <input type="checkbox" class="custom-control-input" id="{{$data->id}}" {{DB::table('vague_filiere_niveau_etudes')->where('filiere_niveau_etude_id',$data->id)->where('vague_id',$key2)->exists()? "name=check  checked readonly":"name=checkbox[] value=$data->id"}} >
                             <label class="custom-control-label" for="{{$data->id}}">{{$data->filiere->designation}}|{{$data->niveau_etude->designation}}</label>
                         </div>
                         @endforeach

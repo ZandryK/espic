@@ -36,17 +36,20 @@
             <li>
                 <a href="">
                     <i class="fa fa-cog"></i>
-                    <span class="text">Paramètre</span>
+                    <span class="text">Thème</span>
                 </a>
             </li>
-            @if (auth()->user()->usergroups->count() >=2 )
-            <li>
-                <a href="{{ route('change.compte', ['session'=>session()->get('usr_grp')]) }}">
-                    <i class="fa fa-user-plus"></i>
-                    <span class="text">Changer de compte</span>
-                </a>
-            </li>
-            @endif
+            @isset(auth()->user()->usergroups)
+                @if (auth()->user()->usergroups->count() >=2 )
+                <li>
+                    <a href="{{ route('change.compte', ['session'=>session()->get('usr_grp')]) }}">
+                        <i class="fa fa-user-plus"></i>
+                        <span class="text">Changer de compte</span>
+                    </a>
+                </li>
+                @endif
+            @endisset
+            
             @if (session()->get('usr_grp') == "Formateurs")
             <li>
                 <a href="{{ route('view.video') }}">
@@ -80,7 +83,9 @@
                     <li class="nav-item">
                         <a href="" class="nav-link">
                             <i class="fa fa-user-circle"></i>
-                            <span class="text">{{auth()->user()->name}}</span>
+                            @isset(auth()->user()->name)
+                                <span class="text">{{auth()->user()->name}}</span>
+                            @endisset
                         </a>
                     </li>
                 </ul>

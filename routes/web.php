@@ -136,3 +136,15 @@ Route::get('/Home/Configuration/Delete/{key}/{id}',[App\Http\Controllers\Admin\D
 Route::get('/Home/Cour/Delete/{id}',[App\Http\Controllers\Admin\DeleteController::class,'delete_cours'])->name('delete.cours');
 
 Route::get('/Home/Users/{id}',[App\Http\Controllers\Admin\DeleteController::class,'delete_user'])->name('delete.users');
+
+
+/**
+ * EDIT ROUTE
+ */
+
+Route::get('Home/Configuration/Edit/{key}/{id}',[App\Http\Controllers\Admin\EditController::class,'edit_commun'])->name('edit.configuration');
+
+Route::post('Home/Configuration/Update/{key}',[App\Http\Controllers\Admin\UpdateController::class,'update_commun'])->name('update.config');
+
+Route::get('/Home/Delete/Attr/{key}/{id}',[App\Http\Controllers\Admin\UpdateController::class,' delete_attribution'])->name('delete.attr');
+

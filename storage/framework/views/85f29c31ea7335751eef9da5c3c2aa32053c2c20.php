@@ -4,7 +4,38 @@
 
 <?php $__env->startSection("adminBody"); ?>
     <div class="profil">
-        <h3 style="font-size:12px ;"><i class="fa fa-cog"></i>&nbsp;Merci de choisir les champs pour attribuer cette <?php echo e($key); ?> </h3>
+        <h3 style="font-size:12px ;"><i class="fa fa-cog"></i>&nbsp;
+            <?php if(isset($key)): ?>
+                <?php switch($key):
+                    case ("filiere"): ?>
+                        <?php echo e("Merci de choisir les les niveau d'etude pour cette filiere"); ?>
+
+                        <?php break; ?>
+                    <?php case ("niveau d'etude"): ?>
+                        <?php echo e("Merci de choisir le(s) filiere(s) pour cette niveau d'etude"); ?>
+
+                        <?php break; ?>
+                    <?php case ("formateur"): ?>
+                        <?php echo e("Merci de choisir les cours pour ce formateur"); ?>
+
+                        <?php break; ?>
+                    <?php case ("etudiant"): ?>
+                        <?php echo e("Merci de choisir le(les) vague(s) pour cette etudiant"); ?>
+
+                        <?php break; ?>
+                    <?php case ("cours"): ?>
+                        <?php echo e("Merci de choisir les vagues qui peut acceder à ce cours"); ?>
+
+                        <?php break; ?>
+                    <?php case ('vague'): ?>
+                        <?php echo e("Merci de choisir les filière et niveau d'etude pour cette vague"); ?>
+
+                        <?php break; ?>
+                    <?php default: ?>
+                        <?php break; ?>
+                <?php endswitch; ?>
+            <?php endif; ?>
+        </h3>
         <div class="card">
             <form action="<?php echo e(route('attribution.store')); ?>" method="POST">
                 <?php echo csrf_field(); ?>
@@ -14,7 +45,7 @@
                         <div class="custom-control custom-checkbox mb-3">
                             <input type="hidden" name="key2" value="<?php echo e($key2); ?>">
                             <input type="hidden" name="key" value="<?php echo e($key); ?>">
-                            <input type="checkbox" class="custom-control-input" id="<?php echo e($data->id); ?>" name="checkbox[]" value="<?php echo e($data->id); ?>">
+                            <input type="checkbox" class="custom-control-input" id="<?php echo e($data->id); ?>" <?php echo e(DB::table('vague_filiere_niveau_etudes')->where('filiere_niveau_etude_id',$data->id)->where('vague_id',$key2)->exists()? "name=check  checked readonly":"name=checkbox[] value=$data->id"); ?> >
                             <label class="custom-control-label" for="<?php echo e($data->id); ?>"><?php echo e($data->filiere->designation); ?>|<?php echo e($data->niveau_etude->designation); ?></label>
                         </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
