@@ -1,6 +1,8 @@
 @extends('layout.appAdmin')
 @section('style')
 <link rel="stylesheet" href="{{ asset('assets/css/profil.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/modal.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/editPassword.css') }}">
 @endsection('style')
 @section('adminBody')
 <div class="profil">
@@ -27,9 +29,11 @@
             </div>
         </form>
         <div class="button">
-            <a href="" type="button" class="edit"><i class="fa fa-user">&nbsp;modifier</i></a>
-            <a href="" type="button" class="reset"><i class="fa fa-refresh">&nbsp;changer mots de passe</i></a>
+            <a href="" type="button" class="edit" data-target="#modalEditProfil" data-toggle="modal"><i class="fa fa-user">&nbsp;modifier</i></a>
+            <a href="" type="button" class="reset" data-target="#pwdModal" data-toggle="modal"><i class="fa fa-refresh">&nbsp;changer mots de passe</i></a>
         </div>
     </div>
 </div>
+@include("Admin.modal.editUser")
+@include("Admin.modal.editPassword")
 @endsection('adminBody')

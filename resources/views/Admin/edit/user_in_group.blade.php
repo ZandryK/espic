@@ -6,31 +6,26 @@
     <div class="profil">
         <div class="contenu card">
             <div class="card-header bg-white d-flex flex-row justify-content-between align-items-center">
-                <h5 class="text-capitalize"><i class="fa fa-user-cog"></i>&nbsp;Utilisateurs</h5>
-                <a href="{{ route('register_view') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp;Ajouter</a>
+                <h5 class="text-capitalize"><i class="fa fa-user-cog"></i>&nbsp;Utilisateur dans le groupe {{$data->group_name}}</h5>
             </div>
             <div class="card-body table-responsive">
-                <table class="table" id="myTable">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Matricule</th>
-                            <th scope="col">Nom d'utilisateur</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Nom</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                 <tbody>
-                    @foreach ($users as $index=>$user)
+                    @foreach ($data->users as $index=>$user)
                     <tr>
                         <th scope="row">{{$index+1}}</th>
                         <td>{{$user->matricule}}</td>
                         <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
                         <td>
-                            <a href="{{ route('attribution', ['key'=>'users','key2'=>$user->id]) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                            <a href="{{ route('delete.users', ['id'=>$user->id]) }}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
-                            <a href="" class="btn btn-outline-success btn-sm"><i class="fa fa-eye"></i></a>
+                            <a href="{{ route('desactivation', ['user_id'=>$user->id,'usergroup_id'=>$data->id]) }}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

@@ -23,7 +23,7 @@
                                 &nbsp;{{$data->vague_filiere_niveau_etude->filiere_niveau_etude->niveau_etude->designation}}
                             </h3>
                             <p><span><i class="fa fa-clock-o"></i></span>&nbsp;{{$data->vague_filiere_niveau_etude->vague->designation}}</p>
-                            <a href="{{ route('formateur.cours', ['id'=>$data->vague_filiere_niveau_etude->id]) }}" class="btn btn-info btn-sm">Go</a>
+                            <a href="{{ route('formateur.cours', ['id'=>$data->vague_filiere_niveau_etude->id]) }}" class="btn btn-info btn-sm">Acceder</a>
                         </figcaption>
                     </figure>
                 </div>
@@ -31,9 +31,9 @@
             <h1 class="text-center">Aucun vague</h1>
             @endforelse
         @elseif (session()->get('usr_grp') == "Etudiants")
-        
             @forelse ($data as $data )
                 @foreach ($data->vague_filiere_niveau_etude->cours as $cour )
+                
                     <div class="card">
                         <figure>
                             <span class="icone"><i class="fa fa-book"></i></span>

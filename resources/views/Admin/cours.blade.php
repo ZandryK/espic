@@ -3,20 +3,20 @@
     <link rel="stylesheet" href="{{ asset('assets/css/cours.css') }}">
 @endsection('style')
 @section('adminBody')
-<div class="profil">
-    <div class="contenu card">
-            <div class="card-header d-flex flex-row justify-content-between align-items-center">
-                <h5 class="text-capitalize"><i class="fa fa-user-cog"></i>&nbsp;Utilisateus</h5>
+<div class="profil h-100">
+    <div class="contenu card h-100 d-flex flex-column">
+            <div class="card-header bg-white d-flex flex-row justify-content-between align-items-center">
+                <h5 class="text-capitalize"><i class="fa fa-user-cog"></i>&nbsp;Cours</h5>
                 <button class="btn btn-sm btn-primary" data-target="#myModal" data-toggle="modal"><i class="fa fa-plus"></i>&nbsp;Ajouter</button>
             </div>
-            <div class="card-body table-responsive w-100 h-100">
-                <table class="table table-striped">
+            <div class="table-responsive" style="height: inherit">
+                <table class="table" id="myTable">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">designation</th>
-                            <th scope="col">durée</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" style="width:10%">#</th>
+                            <th scope="col" style="width:25%">designation</th>
+                            <th scope="col" style="width:25%">durée</th>
+                            <th scope="col" style="width:30%">Action</th>
                         </tr>
                     </thead>
                     <tbody>

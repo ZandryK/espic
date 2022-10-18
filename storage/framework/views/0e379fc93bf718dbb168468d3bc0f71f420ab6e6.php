@@ -5,11 +5,11 @@
     <div class="profil">
         <div class="contenu card">
             <div class="card-header bg-white d-flex flex-row justify-content-between align-items-center">
-                <h5 class="text-capitalize"><i class="fa fa-user-cog"></i>&nbsp;Utilisateus</h5>
+                <h5 class="text-capitalize"><i class="fa fa-user-cog"></i>&nbsp;Utilisateurs</h5>
                 <a href="<?php echo e(route('register_view')); ?>" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp;Ajouter</a>
             </div>
             <div class="card-body table-responsive">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -27,7 +27,7 @@
                         <td><?php echo e($user->name); ?></td>
                         <td><?php echo e($user->email); ?></td>
                         <td>
-                            <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo e(route('attribution', ['key'=>'users','key2'=>$user->id])); ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
                             <a href="<?php echo e(route('delete.users', ['id'=>$user->id])); ?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
                             <a href="" class="btn btn-outline-success btn-sm"><i class="fa fa-eye"></i></a>
                         </td>

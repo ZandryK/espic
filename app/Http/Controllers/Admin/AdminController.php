@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use App\Models\EtudiantVague;
 use Illuminate\Support\Facades\Auth;
 use App\Models\VagueFiliereNiveauEtude;
+use App\Models\Video;
 use Illuminate\Contracts\Session\Session;
 
 class AdminController extends Controller
@@ -173,6 +174,9 @@ class AdminController extends Controller
             case 'etudiant':
                 $this->table = Etudiant::find($key2)->filiere_niveau_etudes()->get();
                 break;
+            case 'users':
+                $this->table = Usergroup::all();
+                break;
             default:
                 # code...
                 break;
@@ -227,5 +231,11 @@ class AdminController extends Controller
             'name'=>$this->name,
             'email'=>$this->email
         ]);
+    }
+
+    public function list_video()
+    {
+        $data = Video::all();
+        return view('Admin.video',compact('data'));
     }
 }

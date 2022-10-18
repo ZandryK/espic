@@ -68,7 +68,7 @@
           </div>
           <div class="form">
               <div class="top">
-                  <h5>Selectionner le vague</h5>
+                  <h5><?php echo e($key == 'formateur' ? "Formateur vague accèss (vague | Niveau d'etude | Filière) ":"Etudiants classification(Filiere | Niveau d'etude)"); ?></h5>
                   <div class="card">
                     <?php if($key == 'formateur'): ?>
                       <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Cour;
-use App\Models\Etudiant;
-use App\Models\Filiere;
-use App\Models\Formateur;
-use App\Models\NiveauEtude;
 use App\Models\User;
 use App\Models\Vague;
+use App\Models\Video;
+use App\Models\Filiere;
+use App\Models\Etudiant;
+use App\Models\Formateur;
+use App\Models\NiveauEtude;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\User_UserGroupe;
+use Illuminate\Support\Facades\File;
 
 class DeleteController extends Controller
 {
@@ -69,8 +72,22 @@ class DeleteController extends Controller
         return redirect()->back();
     }
 
-    public function delete_user_group($id)
+    public function delete_video($id)
     {
+        $video =Video::find($id);
+        if (File::exists(public_path('upload/'.$video->link))) {
+            File::delete(public_path('upload/'.$video->link));
+            $video->delete();
+            toast('Suppression effectuer!','success');
+            return redirect()->back();
+        }
         
+    }
+
+    public function desactivation($user_id, $usergroup_id){
+        $users = User_UserGroupe::where('user_id',$user_id)->where('usergroup_id',$usergroup_id)->first();
+        $users->delete();
+        toast('Compte desactiver!','success');
+        return redirect()->back();
     }
 }

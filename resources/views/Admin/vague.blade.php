@@ -12,7 +12,7 @@
         </form>
       </nav> 
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table" id="myTable">
             <thead>
                 <tr>
                     <th>Designation vague</th>

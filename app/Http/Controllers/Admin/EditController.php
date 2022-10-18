@@ -8,6 +8,9 @@ use App\Models\NiveauEtude;
 use Illuminate\Http\Request;
 use App\Models\FiliereNiveauEtude;
 use App\Http\Controllers\Controller;
+use App\Models\Etudiant;
+use App\Models\Formateur;
+use App\Models\Usergroup;
 use App\Models\VagueFiliereNiveauEtude;
 
 class EditController extends Controller
@@ -34,4 +37,25 @@ class EditController extends Controller
                 break;
         }
     }
+
+    public function user_grp($id)
+    {
+        $data = Usergroup::find($id);
+        return view("Admin.edit.user_in_group",compact('data'));
+    }
+
+    public function formateur($id)
+    {
+        $formateur = Formateur::find($id);
+        return view('Admin.edit.formateur', compact('formateur'));
+    }
+
+    public function etudiant($id)
+    {
+        $etudiant = Etudiant::find($id);
+        return view('Admin.edit.etudiant', compact('etudiant'));
+    }
+
+    
+
 }

@@ -25,7 +25,7 @@
 
                             </h3>
                             <p><span><i class="fa fa-clock-o"></i></span>&nbsp;<?php echo e($data->vague_filiere_niveau_etude->vague->designation); ?></p>
-                            <a href="<?php echo e(route('formateur.cours', ['id'=>$data->vague_filiere_niveau_etude->id])); ?>" class="btn btn-info btn-sm">Go</a>
+                            <a href="<?php echo e(route('formateur.cours', ['id'=>$data->vague_filiere_niveau_etude->id])); ?>" class="btn btn-info btn-sm">Acceder</a>
                         </figcaption>
                     </figure>
                 </div>
@@ -33,9 +33,9 @@
             <h1 class="text-center">Aucun vague</h1>
             <?php endif; ?>
         <?php elseif(session()->get('usr_grp') == "Etudiants"): ?>
-        
             <?php $__empty_1 = true; $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <?php $__currentLoopData = $data->vague_filiere_niveau_etude->cours; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cour): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                
                     <div class="card">
                         <figure>
                             <span class="icone"><i class="fa fa-book"></i></span>

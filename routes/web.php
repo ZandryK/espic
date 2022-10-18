@@ -148,3 +148,27 @@ Route::post('Home/Configuration/Update/{key}',[App\Http\Controllers\Admin\Update
 
 Route::get('/Home/Delete/Attr/{key}/{id}',[App\Http\Controllers\Admin\UpdateController::class,' delete_attribution'])->name('delete.attr');
 
+Route::get('/Home/Admin/video',[App\Http\Controllers\Admin\AdminController::class,'list_video'])->name('video.list');
+
+Route::get('/Home/videos/Delete/{id}',[App\Http\Controllers\Admin\DeleteController::class,'delete_video'])->name('delete.video');
+
+Route::get('/Home/UserGroup/{id}',[App\Http\Controllers\Admin\EditController::class,'user_grp'])->name('edit.usr_grp');
+
+Route:: get('/Home/Formateur/Edit/{id}',[App\Http\Controllers\Admin\EditController::class,'formateur'])->name('edit.formateur');
+
+Route::get('/Home/Etudiant/Edit/{id}',[App\Http\Controllers\Admin\EditController::class,'etudiant'])->name('edit.etudiants');
+
+Route::get('/Home/Users/Desactivation/{user_id}/{usergroup_id}',[App\Http\Controllers\Admin\DeleteController::class,'desactivation'])->name('desactivation');
+
+Route::post('/Home/Update/users',[App\Http\Controllers\Admin\UpdateController::class,'update_user'])->name("user.update");
+
+
+Route::post('/Home/Pers/Update/Formateur',[App\Http\Controllers\Admin\UpdateController::class,'update_formateur'])->name('update.formateur');
+
+Route::post('/Home/Pers/Update/Etudiant',[App\Http\Controllers\Admin\UpdateController::class,'update_etudiant'])->name('update.etudiant');
+
+Route::get('/Home/Delete/Formateur_Vague/{formateur_id}/{vgflnv_id}',[App\Http\Controllers\Admin\UpdateController::class,'delete_formateur_vague'])->name('delete.formateur.vague');
+
+Route::get('/Home/Delete/Formateur_Cours/{formateur_id}/{cvgnv_id}',[App\Http\Controllers\Admin\UpdateController::class,'delete_formateur_cour'])->name('delete.formateur.cours');
+
+Route::get('/Home/Delete/Etudiant/{etudiant_id}/{vgflnv_id}',[App\Http\Controllers\Admin\UpdateController::class,'delete_etudiant_cours'])->name('delete.etudiant.vague');

@@ -23,7 +23,7 @@ class Etudiant extends Model
 
     public function vague_filiere_niveau_etudes()
     {
-        return $this->belongsToMany(VagueFiliereNiveauEtude::class, EtudiantVague::class);
+        return $this->belongsToMany(VagueFiliereNiveauEtude::class, EtudiantVague::class,'etudiant_id','vgflnv_id');
     }
     
 }

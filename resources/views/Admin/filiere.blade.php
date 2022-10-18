@@ -14,7 +14,7 @@
         </form>
       </nav> 
     <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="myTable">
             <thead>
                 <tr class="justify-content-center">
                     <th scope="col" class="text-start " style="width: 30%;">#</th>

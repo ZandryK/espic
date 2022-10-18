@@ -13,7 +13,7 @@ class Usergroup extends Model
         'group_name',
     ];
 
-    public function user()
+    public function users()
     {
         return $this->belongsToMany(User::class, User_UserGroupe::class,"usergroup_id",'user_id');
     }

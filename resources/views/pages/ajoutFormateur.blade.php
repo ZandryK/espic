@@ -69,7 +69,7 @@
           </div>
           <div class="form">
               <div class="top">
-                  <h5>Selectionner le vague</h5>
+                  <h5>{{$key == 'formateur' ? "Formateur vague accèss (vague | Niveau d'etude | Filière) ":"Etudiants classification(Filiere | Niveau d'etude)"}}</h5>
                   <div class="card">
                     @if ($key == 'formateur')
                       @foreach ($data as $data)

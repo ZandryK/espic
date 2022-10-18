@@ -26,6 +26,9 @@
                     @case('vague')
                         {{"Merci de choisir les filière et niveau d'etude pour cette vague"}}
                         @break
+                    @case('users')
+                        {{"Merci de choisir les groupe pour cette utilisateur"}}
+                        @break
                     @default
                         @break
                 @endswitch
@@ -49,7 +52,7 @@
                             <div class="custom-control custom-checkbox mb-3">
                                 <input type="hidden" name="key2" value="{{$key2}}">
                                 <input type="hidden" name="key" value="{{$key}}">
-                                <input type="checkbox" class="custom-control-input" id="{{$value->id}}" name="checkbox[]" value="{{$value->id}}">
+                                <input type="checkbox" class="custom-control-input" id="{{$value->id}}" {{DB::table('cours_vg_niveau_etudes')->where('vg_niveau_etude_id',$value->id)->where('cour_id',$key2)->exists() ? "name=check checked readonly":"name=checkbox[] value=$value->id"}}>
                                 <label class="custom-control-label" for="{{$value->id}}">{{$value->vague->designation}}|{{$value->filiere_niveau_etude->niveau_etude->designation}}|{{$value->filiere_niveau_etude->filiere->designation}}</label>
                             </div>
                         @endforeach
@@ -59,7 +62,7 @@
                                 <div class="custom-control custom-checkbox mb-3">
                                     <input type="hidden" name="key2" value="{{$key2}}">
                                     <input type="hidden" name="key" value="{{$key}}">
-                                    <input type="checkbox" class="custom-control-input" id="{{DB::table('cours_vg_niveau_etudes')->where('vg_niveau_etude_id',$data->id)->where('cour_id',$cours->id)->first()->id}}" name="checkbox[]" value="{{DB::table('cours_vg_niveau_etudes')->where('vg_niveau_etude_id',$data->id)->where('cour_id',$cours->id)->first()->id}}">
+                                    <input type="checkbox" class="custom-control-input" id="{{$ids = DB::table('cours_vg_niveau_etudes')->where('vg_niveau_etude_id',$data->id)->where('cour_id',$cours->id)->first()->id}}" {{DB::table('cour_formateurs')->where('cvgnv_id',DB::table('cours_vg_niveau_etudes')->where('vg_niveau_etude_id',$data->id)->where('cour_id',$cours->id)->first()->id)->where('formateur_id',$key2)->exists() ? "name=check checked readonly":"name=checkbox[] value= $ids"}}>
                                     <label class="custom-control-label" for="{{DB::table('cours_vg_niveau_etudes')->where('vg_niveau_etude_id',$data->id)->where('cour_id',$cours->id)->first()->id}}">{{$cours->designation}} | {{$data->vague->designation}} | {{$data->filiere_niveau_etude->filiere->designation}} | {{$data->filiere_niveau_etude->niveau_etude->designation}}</label>
                                 </div>
                                 @endforeach
@@ -70,21 +73,38 @@
                                         <div class="custom-control custom-checkbox mb-3">
                                             <input type="hidden" name="key2" value="{{$key2}}">
                                             <input type="hidden" name="key" value="{{$key}}">
-                                            <input type="checkbox" class="custom-control-input" id="{{DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id}}" name="checkbox[]" value="{{DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id}}">
-                                            <label class="custom-control-label" for="{{DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id}}">{{$vague->designation}} | {{$data->filiere->designation}} | {{$data->niveau_etude->designation}}</label>
+                                            <input type="checkbox" class="custom-control-input" id="{{$ids = DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->where('filiere_niveau_etude_id',$data->id)->first()->id}}" {{DB::table('etudiant_vagues')->where('vgflnv_id',DB::table('vague_filiere_niveau_etudes')->where('vague_id', $vague->id)->first()->id)->where('etudiant_id',$key2)->exists() ? "name=ckeck checked readonly":"name=checkbox[] value=$ids"}}>
+                                            <label class="custom-control-label" for="{{$ids}}">{{$vague->designation}} | {{$data->filiere->designation}} | {{$data->niveau_etude->designation}}</label>
                                         </div>
                                     @endforeach
                                 @endforeach
-                    @else
+                    @elseif($key == 'filiere')
                         @foreach ($data as $data)
                             <div class="custom-control custom-checkbox mb-3">
                                 <input type="hidden" name="key2" value="{{$key2}}">
                                 <input type="hidden" name="key" value="{{$key}}">
-                                
-                                <input type="checkbox" class="custom-control-input" id="{{$data->id}}" name="checkbox[]" value="{{$data->id}}">
+                                <input type="checkbox" class="custom-control-input" id="{{$data->id}}" {{DB::table("filiere_niveau_etudes")->where('filiere_id',$key2)->where('niveau_etude_id',$data->id)->exists() ? "name=check checked readonly":"name=checkbox[] value=$data->id"}}>
                                 <label class="custom-control-label" for="{{$data->id}}">{{$data->designation}}</label>
                             </div>
                         @endforeach
+                    @elseif($key == "niveau d'etude")
+                        @foreach ($data as $data)
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="hidden" name="key2" value="{{$key2}}">
+                                <input type="hidden" name="key" value="{{$key}}">
+                                <input type="checkbox" class="custom-control-input" id="{{$data->id}}" {{DB::table("filiere_niveau_etudes")->where('filiere_id',$data->id)->where('niveau_etude_id',$key2)->exists() ? "name=check checked readonly":"name=checkbox[] value=$data->id"}}>
+                                <label class="custom-control-label" for="{{$data->id}}">{{$data->designation}}</label>
+                            </div>
+                        @endforeach
+                    @elseif ($key == 'users')
+                            @foreach ($data as $data )
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="hidden" name="key2" value="{{$key2}}">
+                                <input type="hidden" name="key" value="{{$key}}">
+                                <input type="checkbox" class="custom-control-input" id="{{$data->id}}" {{DB::table("user__usergroup")->where('user_id',$key2)->where('usergroup_id',$data->id)->exists() ? "name=check checked readonly":"name=checkbox[] value=$data->id"}}>
+                                <label class="custom-control-label" for="{{$data->id}}">{{$data->group_name}}</label>
+                            </div>
+                            @endforeach
                     @endif
 
                 </div>

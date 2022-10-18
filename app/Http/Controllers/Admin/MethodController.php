@@ -99,7 +99,7 @@ class MethodController extends Controller
                 $this->table->filiere_niveau_etude_id = $request->checkbox[$key];
                 $this->table->save();
             }
-            toast('Enregistrement effectuer!','success');
+            toast('Attribution effectuer!','success');
         }
         else if($key == "cours"){
             foreach ($request->checkbox as $key => $value) {
@@ -108,7 +108,7 @@ class MethodController extends Controller
                 $this->table->vg_niveau_etude_id = $request->checkbox[$key];
                 $this->table->save();
             }
-            toast('Enregistrement effectuer!','success');
+            toast('Attribution effectuer!','success');
             
         }
         else if($key == "formateur"){
@@ -119,7 +119,7 @@ class MethodController extends Controller
                 $this->table->save();
 
             }
-            toast('Enregistrement effectuer!','success');
+            toast('Attribution effectuer!','success');
         }
         else if($key == "etudiant")
         {
@@ -130,16 +130,34 @@ class MethodController extends Controller
                 $this->table->save();
 
             }
-            toast('Enregistrement effectuer!','success');
+            toast('Attribution effectuer!','success');
         }
-        else{
+        else if($key == 'filiere'){
             foreach ($request->checkbox as $key => $value) {
                 $this->table = new FiliereNiveauEtude();
                 $this->table->filiere_id = $request->key2;
                 $this->table->niveau_etude_id = $request->checkbox[$key];
                 $this->table->save();
             }
-            toast('Enregistrement effectuer!','success');
+            toast('Attribution effectuer!','success');
+        }
+        else if($key == "niveau d'etude"){
+            foreach ($request->checkbox as $key => $value) {
+                $this->table = new FiliereNiveauEtude();
+                $this->table->filiere_id = $request->checkbox[$key];
+                $this->table->niveau_etude_id =$request->key2;
+                $this->table->save();
+            }
+            toast('Attribution effectuer!','success');
+        }
+        else if($key == "users"){
+            foreach ($request->checkbox as $val => $value) {
+                User_UserGroupe::create([
+                    "user_id"=>$request->key2,
+                    "usergroup_id"=>$request->checkbox[$val]
+                ]);
+            }
+            toast('Attribution effectuer!','success');
         }
 
         return redirect()->back();

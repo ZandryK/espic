@@ -78,13 +78,13 @@
             </a>
         </div>
         <div class="card">
-            <a href="">
+            <a href="<?php echo e(route('video.list')); ?>">
                 <figure>
                     <span><i class="fa fa-video-camera"></i></span>
                     <figcaption>
                         <h3>Videos</h3>
                         <p>Gerer vos videos, ajouter, supprimer, modifier</p>
-                        <a href="">voir plus</a>
+                        <a href="<?php echo e(route('video.list')); ?>">voir plus</a>
                     </figcaption>
                 </figure>
             </a>
@@ -102,13 +102,13 @@
             </a>
         </div>
         <div class="card">
-            <a href="">
+            <a href="<?php echo e(route('usergroup')); ?>">
                 <figure>
                     <span><i class="fa fa-users"></i></span>
                     <figcaption>
                         <h3>Groupes d'utilisateurs</h3>
                         <p>Gerer vos groupes d'utilisateurs</p>
-                        <a href="">voir plus</a>
+                        <a href="<?php echo e(route('usergroup')); ?>">voir plus</a>
                     </figcaption>
                 </figure>
             </a>

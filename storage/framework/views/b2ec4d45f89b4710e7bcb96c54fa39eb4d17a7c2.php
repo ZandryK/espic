@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/bootstrap.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/font-awesome.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('assets/css/boxicons.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/datatables.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/admin.css')); ?>">
     <?php echo $__env->yieldContent('style'); ?>
 
@@ -16,9 +16,8 @@
     <div class="wrapper">
     
     <section id="sidebar">
-        <a href="" class="brand">
-            <i class="fa fa-user-secret"></i>
-            <span class="text logo">ESC-ESPIC</span>
+        <a href="" class="brand pl-2">
+            <span class="text logo"><img src="<?php echo e(asset('assets/images/logo/esc.png')); ?>" alt="" srcset="" style="width: 160px; height: 50px;"></span>
         </a>
         <ul class="side-menu top">
             <li class="<?php echo e(request()->url() == route('Home') ? 'active':''); ?>">
@@ -77,8 +76,16 @@
     <section id="content">
         <!-- navbar -->
         <nav class="navbar navbar-expand-md navbar-light">
-            <div class="container">
+            <div class="container-fluid">
                 <button class="btn btn-outline-dark btn-toolbars"><i class="fa fa-bars"></i></button>
+                <?php if(request()->url() != route('Home')): ?>
+                    <div class="search">
+                        <input type="text" name="" id="myInput" class="form-control" oninput="myFunction()">
+                        <span class="bg-info">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                <?php endif; ?>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="" class="nav-link">
@@ -97,11 +104,13 @@
                 <?php echo $__env->yieldContent('adminBody'); ?>
             </div>
     
-    </div>
+        </div>
     <script src="<?php echo e(asset('assets/js/jquery.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatables.min.js')); ?>"></script>
     <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <script src="<?php echo e(asset('assets/js/admin.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/admin/search.js')); ?>"></script>
     <?php echo $__env->yieldContent('script'); ?>
 </body>
 </html>
